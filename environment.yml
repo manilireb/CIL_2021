@@ -9,6 +9,7 @@ dependencies:
   - jupyter
   - tensorflow
   - pip
+  - parso=0.7
   - pip:
     - treelib
     - pathos
