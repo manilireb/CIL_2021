@@ -11,5 +11,5 @@ Create the [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/ins
 Activate the environment:
 
 ```
-    conda activate ci
+    conda activate cil
 ```
