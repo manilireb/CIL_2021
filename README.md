@@ -13,3 +13,12 @@ Activate the environment:
 ```
     conda activate cil
 ```
+
+
+### Formatting Code 
+
+Use .[black](https://github.com/psf/black) to format your code before pushing it.  
+
+```
+    black {source_file_or_directory}
+```
