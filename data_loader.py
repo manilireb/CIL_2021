@@ -55,10 +55,85 @@ def get_row_and_col_number(entry):
     return row, col
 
 
+def get_row_and_col_array(data):
+    """
+    Returns arrays of the row and col indices
+    
+    Parameters
+    ----------
+    data : ndarray
+        train_data or test_data given by the function get_train_and_test_data
+
+    Returns
+    -------
+    rows : ndarray
+        rows of the matrix.
+    cols : ndarray
+        columns of the matrix.
+
+    """
+
+    row_col_strings = data[:, 0]
+    row_cols = [get_row_and_col_number(entry) for entry in row_col_strings]
+    rows = np.array([row - 1 for (row, col) in row_cols])
+    cols = np.array([col - 1 for (row, col) in row_cols])
+    return rows, cols
+
+
+def get_data_matrix(data, rows, cols):
+    """
+    Return the data matrix
+
+    Parameters
+    ----------
+    data : ndarray
+        train_data or test_data given by the function get_trian_and_test_data.
+    rows : ndarray
+        array of row indices given by get_row_and_col_array
+    cols : ndarray
+        array of column indices given by get_row_and_col_array.
+
+    Returns
+    -------
+    data_matrix : ndarray
+        10'000 x 1000 matrix filled with with the ratings at the corresponding entries
+        the missing values are filled with the mean rating
+
+    """
+    known_ratings = data[:, 1]
+    data_matrix = np.full(
+        (NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(known_ratings), dtype=np.uint8
+    )
+    for i in range(len(rows)):
+        data_matrix[rows[i], cols[i]] = known_ratings[i]
+    return data_matrix
+
+
+def get_mask_matrix(rows, cols):
+    """
+    Returns the mask matrix. I.e. matrix of dimension same as data matrix
+    and the entries are 1 if the corresponding entry was observed and 0 otherwise
+
+    Parameters
+    ----------
+    rows : ndarray
+         array of row indices given by get_row_and_col_array
+    cols : ndarray
+         array of column indices given by get_row_and_col_array.
+
+    Returns
+    -------
+    mask : ndarray
+        mask matrix
+
+    """
+    mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES), dtype=np.uint8)
+    mask[rows, cols] = 1
+    return mask
+
+
 if __name__ == "__main__":
     train_data, test_data = get_train_and_test_data("data_train.csv")
-
-    # short test to see if the function works
-    for i in range(30):
-        row, col = get_row_and_col_number(train_data[i, 0])
-        print(row, col)
+    rows, cols = get_row_and_col_array(train_data)
+    data_matrix = get_data_matrix(train_data, rows, cols)
+    mask = get_mask_matrix(rows, cols)
