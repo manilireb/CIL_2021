@@ -104,8 +104,7 @@ def get_data_matrix(data, rows, cols):
     data_matrix = np.full(
         (NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(known_ratings), dtype=np.uint8
     )
-    for i in range(len(rows)):
-        data_matrix[rows[i], cols[i]] = known_ratings[i]
+    data_matrix[rows, cols] = known_ratings
     return data_matrix
 
 
