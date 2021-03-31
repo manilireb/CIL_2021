@@ -160,7 +160,7 @@ def fill_unobserved_with_row_mean(data_matrix, mask):
 def fill_unobserved_with_col_mean(data_matrix, mask):
     """
     Fills the unobserved data with the mean of the correpsonding column
-    (Attention! this function has side effects on data_matirx)
+    (Attention! this function has side effects on data_matrix)
 
     Parameters
     ----------
