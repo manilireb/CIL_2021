@@ -55,9 +55,10 @@ def get_row_and_col_number(entry):
     return row, col
 
 
-def get_row_and_col_array(data):
+def extract_users_items_predictions(data):
     """
-    Returns arrays of the row and col indices
+    Returns arrays of the row (user), the col (items) and the entries (predictions)
+    of the data
     
     Parameters
     ----------
@@ -66,32 +67,34 @@ def get_row_and_col_array(data):
 
     Returns
     -------
-    rows : ndarray
+    users : ndarray
         rows of the matrix.
-    cols : ndarray
+    items : ndarray
         columns of the matrix.
+    predictions : ndarray
+        predictions of the users.
 
     """
-
+    predictions = data[:, 1]
     row_col_strings = data[:, 0]
     row_cols = [get_row_and_col_number(entry) for entry in row_col_strings]
-    rows = np.array([row - 1 for (row, col) in row_cols])
-    cols = np.array([col - 1 for (row, col) in row_cols])
-    return rows, cols
+    users = np.array([row - 1 for (row, col) in row_cols])
+    items = np.array([col - 1 for (row, col) in row_cols])
+    return users, items, predictions
 
 
-def get_data_matrix(data, rows, cols):
+def get_data_matrix(users, items, predictions):
     """
-    Return the data matrix
+    Returns the data matrix
 
     Parameters
     ----------
-    data : ndarray
-        train_data or test_data given by the function get_trian_and_test_data.
-    rows : ndarray
+    users : ndarray
         array of row indices given by get_row_and_col_array
-    cols : ndarray
+    items : ndarray
         array of column indices given by get_row_and_col_array.
+    predicitons : ndarray
+        array of predictions that are observed
 
     Returns
     -------
@@ -100,24 +103,23 @@ def get_data_matrix(data, rows, cols):
         the missing values are filled with the mean rating
 
     """
-    known_ratings = data[:, 1]
     data_matrix = np.full(
-        (NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(known_ratings), dtype=np.uint8
+        (NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(predictions), dtype=np.uint8
     )
-    data_matrix[rows, cols] = known_ratings
+    data_matrix[users, items] = predictions
     return data_matrix
 
 
-def get_mask_matrix(rows, cols):
+def get_mask_matrix(users, items):
     """
     Returns the mask matrix. I.e. matrix of dimension same as data matrix
     and the entries are 1 if the corresponding entry was observed and 0 otherwise
 
     Parameters
     ----------
-    rows : ndarray
+    users : ndarray
          array of row indices given by get_row_and_col_array
-    cols : ndarray
+    items : ndarray
          array of column indices given by get_row_and_col_array.
 
     Returns
@@ -127,12 +129,12 @@ def get_mask_matrix(rows, cols):
 
     """
     mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES), dtype=np.uint8)
-    mask[rows, cols] = 1
+    mask[users, items] = 1
     return mask
 
 
 if __name__ == "__main__":
     train_data, test_data = get_train_and_test_data("data_train.csv")
-    rows, cols = get_row_and_col_array(train_data)
-    data_matrix = get_data_matrix(train_data, rows, cols)
-    mask = get_mask_matrix(rows, cols)
+    users, items, predictions = extract_users_items_predictions(train_data)
+    data_matrix = get_data_matrix(users, items, predictions)
+    mask = get_mask_matrix(users, items)
