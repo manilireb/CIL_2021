@@ -133,6 +133,54 @@ def get_mask_matrix(users, items):
     return mask
 
 
+def fill_unobserved_with_row_mean(data_matrix, mask):
+    """
+    Fills the unobserved data with the mean of the corresponding row
+    (Attention! this function has side effects on data_matrix)
+
+    Parameters
+    ----------
+    data_matrix : ndarray
+        the data matrix
+    mask : ndarray
+        the mask matrix (same shape as data matrix).
+
+    Returns
+    -------
+    None.
+
+    """
+    for i in range(NUMBER_OF_USERS):
+        row = data_matrix[i, :] * mask[i, :]
+        row_nonzero = row[row != 0]
+        row_mean = np.mean(row_nonzero)
+        data_matrix[i, mask[i, :] == 0] = row_mean
+
+
+def fill_unobserved_with_col_mean(data_matrix, mask):
+    """
+    Fills the unobserved data with the mean of the correpsonding column
+    (Attention! this function has side effects on data_matirx)
+
+    Parameters
+    ----------
+    data_matrix : ndarray
+        the data matrix.
+    mask : ndarray
+        the mask matrix (Same shape as data matrix).
+
+    Returns
+    -------
+    None.
+
+    """
+    for i in range(NUMBER_OF_MOVIES):
+        col = data_matrix[:, i] * mask[:, i]
+        col_nonzero = col[col != 0]
+        col_mean = np.mean(col_nonzero)
+        data_matrix[mask[:, i] == 0, i] = col_mean
+
+
 if __name__ == "__main__":
     train_data, test_data = get_train_and_test_data("data_train.csv")
     users, items, predictions = extract_users_items_predictions(train_data)
