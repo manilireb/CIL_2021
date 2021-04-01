@@ -3,6 +3,8 @@ import math
 from sklearn.metrics import mean_squared_error
 
 import data_loader
+from data_loader import (extract_users_items_predictions,
+                         get_train_and_test_data)
 
 
 class BaseModel:
@@ -15,19 +17,17 @@ class BaseModel:
         None.
 
         """
-        self.train_data, self.test_data = data_loader.get_train_and_test_data(
-            "data_train.csv"
-        )
+        self.train_data, self.test_data = get_train_and_test_data("data_train.csv")
         (
             self.train_users,
             self.train_items,
             self.train_predictions,
-        ) = data_loader.extract_users_items_predictions(self.train_data)
+        ) = extract_users_items_predictions(self.train_data)
         (
             self.test_users,
             self.test_items,
             self.test_predictions,
-        ) = data_loader.extract_users_items_predictions(self.test_data)
+        ) = extract_users_items_predictions(self.test_data)
         self.rmse = lambda x, y: math.sqrt(mean_squared_error(x, y))
 
     def get_score(self, data_matrix):
