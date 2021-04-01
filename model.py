@@ -3,20 +3,11 @@ import math
 from sklearn.metrics import mean_squared_error
 
 import data_loader
-from data_loader import (extract_users_items_predictions,
-                         get_train_and_test_data)
+from data_loader import extract_users_items_predictions, get_train_and_test_data
 
 
 class BaseModel:
     def __init__(self):
-        """
-        Constructor
-
-        Returns
-        -------
-        None.
-
-        """
         self.train_data, self.test_data = get_train_and_test_data("data_train.csv")
         (
             self.train_users,
