@@ -103,9 +103,7 @@ def get_data_matrix(users, items, predictions):
         the missing values are filled with the mean rating
 
     """
-    data_matrix = np.full(
-        (NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(predictions), dtype=np.uint8
-    )
+    data_matrix = np.full((NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(predictions),)
     data_matrix[users, items] = predictions
     return data_matrix
 
@@ -128,7 +126,7 @@ def get_mask_matrix(users, items):
         mask matrix
 
     """
-    mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES), dtype=np.uint8)
+    mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES))
     mask[users, items] = 1
     return mask
 
