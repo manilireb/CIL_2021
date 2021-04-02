@@ -39,7 +39,8 @@ class SVD(BaseModel):
 
         U, s, Vt = np.linalg.svd(self.data_matrix, full_matrices=False)
         S = np.zeros((NUMBER_OF_MOVIES, NUMBER_OF_MOVIES))
-        S[:n_eigenvalues, :n_eigenvalues] = np.diag(s[:n_eigenvalues])
+        eigenvalues_indices = np.arange(n_eigenvalues)
+        S[eigenvalues_indices, eigenvalues_indices] = s[eigenvalues_indices]
 
         reconstructed_matrix = U @ S @ Vt
         return reconstructed_matrix
@@ -47,7 +48,7 @@ class SVD(BaseModel):
 
 if __name__ == "__main__":
     svd_model = SVD()
-
+    
     print("-------------- Impute with overall mean ---------------------")
     approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=2)
     print("SVD with 2 eigenvalues:", svd_model.get_score(approx_matrix))
