@@ -3,7 +3,8 @@ import math
 from sklearn.metrics import mean_squared_error
 
 import data_loader
-from data_loader import extract_users_items_predictions, get_train_and_test_data
+from data_loader import (extract_users_items_predictions,
+                         get_train_and_test_data)
 
 
 class BaseModel:
