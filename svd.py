@@ -2,8 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import data_loader
-from data_loader import (NUMBER_OF_MOVIES, get_data_matrix, get_mask_matrix,
-                         impute_with_col_mean, impute_with_row_mean)
+from data_loader import (
+    NUMBER_OF_MOVIES,
+    get_data_matrix,
+    get_mask_matrix,
+    impute_with_col_mean,
+    impute_with_row_mean,
+)
 from model import BaseModel
 
 
@@ -48,7 +53,7 @@ class SVD(BaseModel):
 
 if __name__ == "__main__":
     svd_model = SVD()
-    
+
     print("-------------- Impute with overall mean ---------------------")
     approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=2)
     print("SVD with 2 eigenvalues:", svd_model.get_score(approx_matrix))
