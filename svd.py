@@ -9,18 +9,16 @@ from model import BaseModel
 
 def pretty_print(func):
     def wrapper(*args, **kwargs):
-        if len(kwargs) == 1:
+        obj = args[0]
+        imputer = obj.imputer
+        if imputer == None:
             print("Impute with overall mean")
         else:
-            impute = kwargs["impute"].__name__
-            print("Impute with function:", impute)
+            print("Impute with function:", imputer.__name__)
         res = func(*args, **kwargs)
         n_eigvals = kwargs["n_eigenvalues"]
         print(
-            "SVD with",
-            n_eigvals,
-            "eigenvalues has RMSE score of:",
-            args[0].get_score(res),
+            "SVD with", n_eigvals, "eigenvalues has RMSE score of:", obj.get_score(res),
         )
         return res
 
@@ -28,15 +26,19 @@ def pretty_print(func):
 
 
 class SVD(BaseModel):
-    def __init__(self):
+    def __init__(self, imputer=None):
         super().__init__()
+        self.imputer = imputer
         self.data_matrix = get_data_matrix(
             self.train_users, self.train_items, self.train_predictions
         )
         self.mask = get_mask_matrix(self.train_users, self.train_items)
+        if imputer != None:
+            imputer(self.data_matrix, self.mask)
+        self.U, self.s, self.Vt = np.linalg.svd(self.data_matrix, full_matrices=False)
 
     @pretty_print
-    def get_approx_matrix(self, n_eigenvalues, impute=None):
+    def get_approx_matrix(self, n_eigenvalues):
         """
         Get best rank-k approximation of the data matrix,
         where k = n_eigenvalues
@@ -45,9 +47,6 @@ class SVD(BaseModel):
         ----------
         n_eigenvalues : int
             Rank approximation number.
-        impute : func, optional
-            Funtcion used to impute unobserved variable.
-            E.g. impute_with_row_mean from the data_loader module
 
         Returns
         -------
@@ -55,33 +54,40 @@ class SVD(BaseModel):
             Best rank-n_eigenvalues approximation of data_matrix
 
         """
-        if impute != None:
-            impute(self.data_matrix, self.mask)
-
-        U, s, Vt = np.linalg.svd(self.data_matrix, full_matrices=False)
         S = np.zeros((NUMBER_OF_MOVIES, NUMBER_OF_MOVIES))
         eigenvalues_indices = np.arange(n_eigenvalues)
-        S[eigenvalues_indices, eigenvalues_indices] = s[eigenvalues_indices]
+        S[eigenvalues_indices, eigenvalues_indices] = self.s[eigenvalues_indices]
 
-        reconstructed_matrix = U @ S @ Vt
+        reconstructed_matrix = self.U @ S @ self.Vt
         return reconstructed_matrix
+
+    def plot_singular_values(self):
+        """
+        plots the first 20 singular values to check how many of them are
+        important to include in our approximation. According to the
+        plots I would suggest that 3 is a reasonable number
+
+        Returns
+        -------
+        None.
+
+        """
+        plt.title("Singular Values of Data Matrix")
+        plt.plot(self.s[:20], "bo")
+        plt.ylabel("singular values")
+        plt.show()
 
 
 if __name__ == "__main__":
+
     svd_model = SVD()
-
-    n_eigvals = 2
-
+    n_eigvals = 3
     approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=n_eigvals)
-
     print()
 
-    approx_matrix = svd_model.get_approx_matrix(
-        n_eigenvalues=n_eigvals, impute=impute_with_row_mean
-    )
-
+    svd_model_row_mean = SVD(imputer=impute_with_row_mean)
+    approx_matrix = svd_model_row_mean.get_approx_matrix(n_eigenvalues=n_eigvals)
     print()
 
-    approx_matrix = svd_model.get_approx_matrix(
-        n_eigenvalues=n_eigvals, impute=impute_with_col_mean
-    )
+    svd_model_col_mean = SVD(imputer=impute_with_col_mean)
+    approx_matrix = svd_model_col_mean.get_approx_matrix(n_eigenvalues=n_eigvals)
