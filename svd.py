@@ -79,9 +79,10 @@ class SVD(BaseModel):
 
 
 if __name__ == "__main__":
+    
+    n_eigvals = 3
 
     svd_model = SVD()
-    n_eigvals = 3
     approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=n_eigvals)
     print()
 
