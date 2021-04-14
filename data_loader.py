@@ -103,7 +103,7 @@ def get_data_matrix(users, items, predictions):
         the missing values are filled with the mean rating
 
     """
-    data_matrix = np.full((NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(predictions),)
+    data_matrix = np.full((NUMBER_OF_USERS, NUMBER_OF_MOVIES), np.mean(predictions))
     data_matrix[users, items] = predictions
     return data_matrix
 
