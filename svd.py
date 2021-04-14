@@ -2,14 +2,29 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import data_loader
-from data_loader import (
-    NUMBER_OF_MOVIES,
-    get_data_matrix,
-    get_mask_matrix,
-    impute_with_col_mean,
-    impute_with_row_mean,
-)
+from data_loader import (NUMBER_OF_MOVIES, get_data_matrix, get_mask_matrix,
+                         impute_with_col_mean, impute_with_row_mean)
 from model import BaseModel
+
+
+def pretty_print(func):
+    def wrapper(*args, **kwargs):
+        if len(kwargs) == 1:
+            print("Impute with overall mean")
+        else:
+            impute = kwargs["impute"].__name__
+            print("Impute with function:", impute)
+        res = func(*args, **kwargs)
+        n_eigvals = kwargs["n_eigenvalues"]
+        print(
+            "SVD with",
+            n_eigvals,
+            "eigenvalues has RMSE score of:",
+            args[0].get_score(res),
+        )
+        return res
+
+    return wrapper
 
 
 class SVD(BaseModel):
@@ -20,6 +35,7 @@ class SVD(BaseModel):
         )
         self.mask = get_mask_matrix(self.train_users, self.train_items)
 
+    @pretty_print
     def get_approx_matrix(self, n_eigenvalues, impute=None):
         """
         Get best rank-k approximation of the data matrix,
@@ -54,20 +70,18 @@ class SVD(BaseModel):
 if __name__ == "__main__":
     svd_model = SVD()
 
-    print("-------------- Impute with overall mean ---------------------")
-    approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=2)
-    print("SVD with 2 eigenvalues:", svd_model.get_score(approx_matrix))
+    n_eigvals = 2
+
+    approx_matrix = svd_model.get_approx_matrix(n_eigenvalues=n_eigvals)
 
     print()
-    print("-------------- Impute with row mean ---------------------")
+
     approx_matrix = svd_model.get_approx_matrix(
-        n_eigenvalues=2, impute=impute_with_row_mean
+        n_eigenvalues=n_eigvals, impute=impute_with_row_mean
     )
-    print("SVD with 2 eigenvalues:", svd_model.get_score(approx_matrix))
 
     print()
-    print("-------------- Impute with col mean ---------------------")
+
     approx_matrix = svd_model.get_approx_matrix(
-        n_eigenvalues=2, impute=impute_with_col_mean
+        n_eigenvalues=n_eigvals, impute=impute_with_col_mean
     )
-    print("SVD with 2 eigenvalues:", svd_model.get_score(approx_matrix))
