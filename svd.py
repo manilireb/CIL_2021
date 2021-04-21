@@ -73,7 +73,7 @@ class SVD(BaseModel):
 
         """
         plt.title("Singular Values of Data Matrix")
-        plt.plot(self.s[:20], "bo")
+        plt.plot(self.s[1:20], "bo")
         plt.ylabel("singular values")
         plt.show()
 

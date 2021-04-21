@@ -126,10 +126,9 @@ def get_mask_matrix(users, items):
         mask matrix
 
     """
-    mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES))
+    mask = np.zeros((NUMBER_OF_USERS,NUMBER_OF_MOVIES))
     mask[users, items] = 1
     return mask
-
 
 def impute_with_row_mean(data_matrix, mask):
     """
