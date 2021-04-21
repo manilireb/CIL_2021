@@ -4,6 +4,7 @@ dependencies:
   - numpy
   - scipy
   - pandas
+  - matplotlib
   - pip:
     - scikit-surprise
     - bayesian-optimization
