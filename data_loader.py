@@ -8,7 +8,7 @@ NUMBER_OF_USERS, NUMBER_OF_MOVIES = (10000, 1000)
 
 def get_train_and_test_data(filename, train_size=0.9):
     """
-    returns ndarrays of the train and the test data    
+    returns ndarrays of the train and the test data
 
     Parameters
     ----------
@@ -17,16 +17,14 @@ def get_train_and_test_data(filename, train_size=0.9):
     train_size : Float
         size of the train data in percentage. The default is 0.9.
 
-    Returns
+    Returnsgithub.com/PyCQA/isort
     -------
     (ndarray, ndarray)
         ndarrays of the train and the test data.
 
     """
     data_pd = pd.read_csv(filename)
-    train_pd, test_pd = train_test_split(
-        data_pd, train_size=train_size, random_state=42
-    )
+    train_pd, test_pd = train_test_split(data_pd, train_size=train_size, random_state=42)
     return np.array(train_pd), np.array(test_pd)
 
 
@@ -59,7 +57,7 @@ def extract_users_items_predictions(data):
     """
     Returns arrays of the row (user), the col (items) and the entries (predictions)
     of the data
-    
+
     Parameters
     ----------
     data : ndarray
@@ -126,9 +124,10 @@ def get_mask_matrix(users, items):
         mask matrix
 
     """
-    mask = np.zeros((NUMBER_OF_USERS,NUMBER_OF_MOVIES))
+    mask = np.zeros((NUMBER_OF_USERS, NUMBER_OF_MOVIES))
     mask[users, items] = 1
     return mask
+
 
 def impute_with_row_mean(data_matrix, mask):
     """
