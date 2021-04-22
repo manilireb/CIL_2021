@@ -17,7 +17,7 @@ def get_train_and_test_data(filename, train_size=0.9):
     train_size : Float
         size of the train data in percentage. The default is 0.9.
 
-    Returnsgithub.com/PyCQA/isort
+    Returns
     -------
     (ndarray, ndarray)
         ndarrays of the train and the test data.
