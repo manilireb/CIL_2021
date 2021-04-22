@@ -9,5 +9,7 @@ dependencies:
     - scikit-surprise
     - bayesian-optimization
     - pre-commit
+    - isort
+    - black
 
 
