@@ -2,8 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import data_loader
-from data_loader import (NUMBER_OF_MOVIES, get_data_matrix, get_mask_matrix,
-                         impute_with_col_mean, impute_with_row_mean)
+from data_loader import (
+    NUMBER_OF_MOVIES,
+    get_data_matrix,
+    get_mask_matrix,
+    impute_with_col_mean,
+    impute_with_row_mean,
+)
 from model import BaseModel
 
 
@@ -18,7 +23,10 @@ def pretty_print(func):
         res = func(*args, **kwargs)
         n_eigvals = kwargs["n_eigenvalues"]
         print(
-            "SVD with", n_eigvals, "eigenvalues has RMSE score of:", obj.get_score(res),
+            "SVD with",
+            n_eigvals,
+            "eigenvalues has RMSE score of:",
+            obj.get_score(res),
         )
         return res
 
@@ -29,9 +37,7 @@ class SVD(BaseModel):
     def __init__(self, imputer=None):
         super().__init__()
         self.imputer = imputer
-        self.data_matrix = get_data_matrix(
-            self.train_users, self.train_items, self.train_predictions
-        )
+        self.data_matrix = get_data_matrix(self.train_users, self.train_items, self.train_predictions)
         self.mask = get_mask_matrix(self.train_users, self.train_items)
         if imputer != None:
             imputer(self.data_matrix, self.mask)
@@ -79,7 +85,7 @@ class SVD(BaseModel):
 
 
 if __name__ == "__main__":
-    
+
     n_eigvals = 3
 
     svd_model = SVD()

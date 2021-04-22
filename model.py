@@ -24,7 +24,7 @@ class BaseModel:
     def get_score(self, data_matrix):
         """
         Computes the RMSE score of the predicted values of the test data
-        
+
 
         Parameters
         ----------
@@ -44,9 +44,7 @@ class BaseModel:
 if __name__ == "__main__":
 
     model = BaseModel()
-    data_matrix = data_loader.get_data_matrix(
-        model.train_users, model.train_items, model.train_predictions
-    )
+    data_matrix = data_loader.get_data_matrix(model.train_users, model.train_items, model.train_predictions)
     mask = data_loader.get_mask_matrix(model.train_users, model.train_items)
     print("RMSE with overall mean:", model.get_score(data_matrix))
     data_loader.impute_with_row_mean(data_matrix, mask)
