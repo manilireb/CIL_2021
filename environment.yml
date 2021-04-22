@@ -8,5 +8,6 @@ dependencies:
   - pip:
     - scikit-surprise
     - bayesian-optimization
+    - pre-commit
 
 
