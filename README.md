@@ -15,15 +15,11 @@ conda activate cil
 ```
 
 
-### Formatting Code 
+### Pre-Commit Hooks  
 
-Use [black](https://github.com/psf/black) to format your code before pushing it.  
+After creating the environment run  
+```
+install pre-commit 
+```
+This runs the [pre-commit-hooks](https://pre-commit.com/hooks.html) specified in the [.pre-commit-config.yaml](.pre-commit-config.yaml) file before each push.
 
-```
-black {source_file_or_directory}
-```
-To sort your imports you can use [isort](https://pypi.org/project/isort/)  
-
-```
-isort {source_file_or_directory}
-```
