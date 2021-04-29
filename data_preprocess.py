@@ -4,11 +4,12 @@ import pandas as pd
 
 class Data:
     """
-    This class bundles all methods for preprocessing the data given in the 'data_train.csv' file. Take a look at the examples/fetch_data.py file to see how to use it.
+    This class bundles all methods for preprocessing the data given in the 'data_train.csv' file.
+    Take a look at the examples/fetch_data.py file to see how to use it.
 
     Parameters
     ----------
-    filename : String, optional
+    filename : str, optional
         The name of the file where the data is stored. The default is 'data_train.csv'.
 
     """
@@ -38,7 +39,7 @@ class Data:
 
         Parameters
         ----------
-        entry : String
+        entry : str
             String given by the data in the first column of data_train.
             E.g. 'r631_c741'
 
