@@ -7,6 +7,11 @@ Create the [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/ins
 ```
 conda env create -n cil -f environment.yml
 ```
+Or if you already have created the environment, update it using:
+
+```
+conda env update -n cil -f environment.yml
+```
 
 Activate the environment:
 
@@ -19,7 +24,7 @@ conda activate cil
 
 After creating the environment run  
 ```
-install pre-commit 
+pip install pre-commit 
 ```
 This runs the [pre-commit-hooks](https://pre-commit.com/hooks.html) specified in the [.pre-commit-config.yaml](.pre-commit-config.yaml) file before each push.
 
