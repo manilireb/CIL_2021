@@ -4,8 +4,7 @@ import pandas as pd
 
 class Data:
     """
-    This class bundles all methods for preprocessing the data given in the 'data_train.csv' file.
-    Take a look at the examples/fetch_data.py file to see how to use it.
+    This class bundles all methods for preprocessing the data given in the 'data_train.csv' file. Take a look at the examples/fetch_data.py file to see how to use it.
 
     Parameters
     ----------
@@ -21,8 +20,7 @@ class Data:
 
     def load_data(self):
         """
-        loads the data from the csv file into a
-        np.ndarray.
+        loads the data from the csv file into a np.ndarray.
 
         Returns
         -------
@@ -36,8 +34,7 @@ class Data:
 
     def extract_row_and_col_number(self, entry):
         """
-        extracts the row and the col number of an
-        entry in the data and retrurns it as ints.
+        extracts the row and the col number of an entry in the data and returns it as ints.
 
         Parameters
         ----------
@@ -61,7 +58,7 @@ class Data:
 
     def get_user_and_item_ids(self, data):
         """
-        Returns arrays with the userIDs and the item IDs.
+        Returns arrays with the userIDs and the itemIDs.
 
         Parameters
         ----------
