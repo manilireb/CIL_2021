@@ -9,8 +9,7 @@ from algo_base import BaseAlgo
 
 class KNN_Basis(BaseAlgo):
     """
-    This class provides the instantiation and the hyperparameter tuning of the KNNBasic methods.
-    Take a look at examples/hyperparams_knn_basic.py to see how to use it.
+    This class provides the instantiation and the hyperparameter tuning of the KNN inspired algorithms.
     Parameters
     ----------
     sim_name : str
