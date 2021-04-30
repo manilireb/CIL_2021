@@ -1,4 +1,8 @@
-from KNN import KNN_Basic
+import sys
+
+sys.path.append("../src/")
+
+from KNN_Basic import KNN_Basic
 
 """
 Please do not run this file on your local machine because it would probably take several hours to complete.
