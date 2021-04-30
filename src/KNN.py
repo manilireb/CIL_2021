@@ -2,13 +2,12 @@ import numpy as np
 from bayes_opt import BayesianOptimization
 from bayes_opt.event import Events
 from bayes_opt.logger import JSONLogger
-from surprise import KNNBasic
 from surprise.model_selection import cross_validate
 
 from algo_base import BaseAlgo
 
 
-class KNN_Basic(BaseAlgo):
+class KNN_Basis(BaseAlgo):
     """
     This class provides the instantiation and the hyperparameter tuning of the KNNBasic methods.
     Take a look at examples/hyperparams_knn_basic.py to see how to use it.
@@ -26,12 +25,8 @@ class KNN_Basic(BaseAlgo):
         self.tuning_params = {"k": [5, 800], "min_k": [1, 20], "min_support": [1, 50]}
         if sim_name == "pearson_baseline":
             self.tuning_params["shrinkage"] = [0, 200]
-        log_file_name = "KNNBasic_"
-        sim = "user_" if user_based else "item_"
-        log_file_name += sim
-        log_file_name += sim_name
-        log_file_name += ".json"
-        self.log_file_name = log_file_name
+        self.log_file_name = None
+        self.algo = None
 
     def optimizer_function(self, k, min_k, min_support, shrinkage=None):
         """
@@ -54,7 +49,7 @@ class KNN_Basic(BaseAlgo):
             (-1) times mean of the 5-fold CV.
         """
         self.sim_options["min_support"] = int(min_support)
-        algo = KNNBasic(k=int(k), min_k=int(min_k), sim_options=self.sim_options, verbose=False)
+        algo = self.algo(k=int(k), min_k=int(min_k), sim_options=self.sim_options, verbose=False)
         cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
         return -np.mean(cv_res.get("test_rmse"))
 
