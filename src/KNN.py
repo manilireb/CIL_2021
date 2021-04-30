@@ -24,7 +24,7 @@ class KNN_Basis(BaseAlgo):
         self.tuning_params = {"k": [5, 800], "min_k": [1, 20], "min_support": [1, 50]}
         if sim_name == "pearson_baseline":
             self.tuning_params["shrinkage"] = [0, 200]
-        self.log_file_name = None
+        self.log_file_name = "Base"
         self.algo = None
 
     def optimizer_function(self, k, min_k, min_support, shrinkage=None):
