@@ -25,3 +25,28 @@ def get_log_file_name(algo_name, user_based, sim_name):
     log_file_name += sim_name.capitalize()
     log_file_name += ".json"
     return log_file_name
+
+
+def get_log_file_name_svd(algo_name, biased):
+    """
+    This function returns the name of the json file where the hyperparameters are logged for the svm method.
+    Its only purpose is to make the constructor more readable.
+
+    Parameters
+    ----------
+    algo_name : str
+        Name of the algorithm. E.g. SVD
+    biased : bool
+        Wheter to use baslines or bias.
+
+    Returns
+    -------
+    log_file_name : str
+        Name of the logg file.
+
+    """
+    log_file_name = algo_name
+    method = "Biased" if biased else "UnBiased"
+    log_file_name += method
+    log_file_name += ".json"
+    return log_file_name
