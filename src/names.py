@@ -22,6 +22,10 @@ def get_log_file_name(algo_name, user_based, sim_name):
     log_file_name = algo_name
     sim = "User" if user_based else "Item"
     log_file_name += sim
-    log_file_name += sim_name.capitalize()
+    if sim_name == "pearson_baseline":
+        sim_name = "PearsonBaseline"
+        log_file_name += sim_name
+    else:
+        log_file_name += sim_name.capitalize()
     log_file_name += ".json"
     return log_file_name
