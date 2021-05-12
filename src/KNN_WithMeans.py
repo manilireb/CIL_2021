@@ -1,7 +1,7 @@
 from surprise import KNNWithMeans
 
 from KNN import KNN_Basis
-from names import get_log_file_name
+from names import get_log_file_name_knn as get_log_file_name
 
 
 class KNN_WithMeans(KNN_Basis):

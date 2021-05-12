@@ -1,4 +1,4 @@
-def get_log_file_name(algo_name, user_based, sim_name):
+def get_log_file_name_knn(algo_name, user_based, sim_name):
     """
     This function returns the name of the json file where the hyperparameters are logged.
     Its only purpose is to make the constructors more readable
