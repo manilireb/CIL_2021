@@ -6,6 +6,17 @@ from MF_Basis import MF_Basis
 
 
 class MFSVDpp(MF_Basis):
+    """
+    This class provides the instantation of the SVD++ Method.
+    Take a look at examples/hyperparameters_svdpp.py to how to use it
+
+    Parameters
+    ----------
+    n_epochs : int, optional
+        The number of epochs. The default is 100.
+
+    """
+
     def __init__(self, n_epochs=100):
         super().__init__()
         self.n_epochs = n_epochs
@@ -26,6 +37,43 @@ class MFSVDpp(MF_Basis):
         }
 
     def optimizer_function(self, n_factors, lr_bu, lr_bi, lr_pu, lr_qi, lr_yj, reg_qi, reg_bu, reg_bi, reg_pu, reg_yj):
+        """
+        Function that gets optimized by the gaussian process.
+        The function returns (-1) times the mean of a 5-fold crossvalidation on the specified hyperparameters.
+        The gaussian process tries to find the parameters that yield the maximum value for the given function. Since we are looking for the parameters that yield minimum value we multply by (-1).
+        Parameters
+
+        Parameters
+        ----------
+        n_factors : int
+            The number of factors.
+        lr_bu : float
+            Learning rate.
+        lr_bi : float
+            Learning rate.
+        lr_pu : float
+            Learning rate.
+        lr_qi : float
+            Learning rate.
+        lr_yj : float
+            Learning rate.
+        reg_qi : float
+            Regularization term.
+        reg_bu : float
+            Regularization term.
+        reg_bi : float
+            Regularization term.
+        reg_pu : float
+            Regularization term.
+        reg_yj : float
+            Regularization term.
+
+        Returns
+        -------
+        float
+            (-1) times mean of the 5-fold CV.
+
+        """
 
         algo = self.algo(
             n_factors=int(n_factors),
