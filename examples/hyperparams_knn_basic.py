@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../src/")
-
 from KNN_Basic import KNN_Basic
 
 """

@@ -1,8 +1,3 @@
-import sys
-
-sys.path.append("..")
-
-
 from KNN_WithZScore import KNN_WithZScore
 
 """
@@ -21,4 +16,13 @@ KNNWithZScoreItemPearson = KNN_WithZScore(sim_name="pearson", user_based=False)
 KNNWithZScoreItemPearsonBaseline = KNN_WithZScore(sim_name="pearson_baseline", user_based=False)
 
 
+KNNWithZScoreUserCosine.log_hyperparameters_to_json()
+KNNWithZScoreUserMsd.log_hyperparameters_to_json()
+KNNWithZScoreUserPearson.log_hyperparameters_to_json()
+KNNWithZScoreUserPearsonBaseline.log_hyperparameters_to_json()
+
+
+KNNWithZScoreItemCosine.log_hyperparameters_to_json()
+KNNWithZScoreItemMsd.log_hyperparameters_to_json()
+KNNWithZScoreItemPearson.log_hyperparameters_to_json()
 KNNWithZScoreItemPearsonBaseline.log_hyperparameters_to_json()
