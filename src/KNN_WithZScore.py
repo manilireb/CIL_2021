@@ -20,5 +20,5 @@ class KNN_WithZScore(KNN_Basis):
 
     def __init__(self, sim_name, user_based):
         super().__init__(sim_name, user_based)
-        self.log_file = get_log_file_name("KNNWithZScore", user_based, sim_name)
+        self.log_file_name = get_log_file_name("KNNWithZScore", user_based, sim_name)
         self.algo = KNNWithZScore
