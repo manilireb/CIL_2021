@@ -40,7 +40,8 @@ class MFSVDpp(MF_Basis):
         """
         Function that gets optimized by the gaussian process.
         The function returns (-1) times the mean of a 5-fold crossvalidation on the specified hyperparameters.
-        The gaussian process tries to find the parameters that yield the maximum value for the given function. Since we are looking for the parameters that yield minimum value we multply by (-1).
+        The gaussian process tries to find the parameters that yield the        TYPE
+            DESCRIPTION. maximum value for the given function. Since we are looking for the parameters that yield minimum value we multply by (-1).
         Parameters
 
         Parameters
