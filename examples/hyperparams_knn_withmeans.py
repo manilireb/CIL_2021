@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append("../src/")
+
 from KNN_WithMeans import KNN_WithMeans
 
 """
