@@ -1,7 +1,4 @@
 import numpy as np
-from bayes_opt import BayesianOptimization
-from bayes_opt.event import Events
-from bayes_opt.logger import JSONLogger
 from surprise.model_selection import cross_validate
 
 from algo_base import BaseAlgo
@@ -24,7 +21,6 @@ class KNN_Basis(BaseAlgo):
         self.tuning_params = {"k": [5, 800], "min_k": [1, 20], "min_support": [1, 50]}
         if sim_name == "pearson_baseline":
             self.tuning_params["shrinkage"] = [0, 200]
-        self.log_file_name = None
         self.algo = None
 
     def optimizer_function(self, k, min_k, min_support, shrinkage=None):
@@ -51,12 +47,3 @@ class KNN_Basis(BaseAlgo):
         algo = self.algo(k=int(k), min_k=int(min_k), sim_options=self.sim_options, verbose=False)
         cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
         return -np.mean(cv_res.get("test_rmse"))
-
-    def log_hyperparameters_to_json(self):
-        """
-        This functions logs the optimal hyperparameters of the given range calculated by the Gaussian process into a json file.
-        """
-        optimizer = BayesianOptimization(f=self.optimizer_function, pbounds=self.tuning_params, random_state=42)
-        logger = JSONLogger(path="./logs/" + self.log_file_name)
-        optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)
-        optimizer.maximize(init_points=3, n_iter=10)

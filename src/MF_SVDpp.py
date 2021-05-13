@@ -2,10 +2,10 @@ import numpy as np
 from surprise import SVDpp
 from surprise.model_selection import cross_validate
 
-from MF_Basis import MF_Basis
+from algo_base import BaseAlgo
 
 
-class MFSVDpp(MF_Basis):
+class MFSVDpp(BaseAlgo):
     """
     This class provides the instantation of the SVD++ Method.
     Take a look at examples/hyperparameters_svdpp.py to how to use it

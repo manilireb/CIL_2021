@@ -2,11 +2,11 @@ import numpy as np
 from surprise import SVD
 from surprise.model_selection import cross_validate
 
-from MF_Basis import MF_Basis
+from algo_base import BaseAlgo
 from names import get_log_file_name_svd as get_log_file_name
 
 
-class MFSVD(MF_Basis):
+class MFSVD(BaseAlgo):
     """
     This class provides the instantiation of the SVD methods.
     Take a look at examples/hyperparameters_svd.py to see how to use it
