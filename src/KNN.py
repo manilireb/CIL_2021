@@ -19,7 +19,8 @@ class KNN_Basis(BaseAlgo):
         super().__init__()
         self.sim_options = {"name": sim_name, "user_based": user_based}
         self.tuning_params = {"k": [5, 800], "min_k": [1, 20], "min_support": [1, 50]}
-        if sim_name == "pearson_baseline":
+        self.sim_name = sim_name
+        if self.sim_name == "pearson_baseline":
             self.tuning_params["shrinkage"] = [0, 200]
         self.algo = None
 
@@ -44,6 +45,31 @@ class KNN_Basis(BaseAlgo):
             (-1) times mean of the 5-fold CV.
         """
         self.sim_options["min_support"] = int(min_support)
+
+        if self.sim_name == "pearson_baseline":
+            self.sim_options["shrinkage"] = int(shrinkage)
+
         algo = self.algo(k=int(k), min_k=int(min_k), sim_options=self.sim_options, verbose=False)
         cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
         return -np.mean(cv_res.get("test_rmse"))
+
+    def get_test_rmse(self):
+        """
+        Returns the average test rmse of a 5-fold cross-validation on the algorithm with the optimal hyperparameters found by the Gaussian process.
+
+        Returns
+        -------
+        float
+            average of the test rmse of a 5-fold cv.
+
+        """
+        opt_hyperparams = self.get_opt_hyperparams()
+        self.sim_options["min_support"] = int(opt_hyperparams["min_support"])
+        del opt_hyperparams["min_support"]
+        self.sim_options["shrinkage"] = int(opt_hyperparams["shrinkage"])
+        del opt_hyperparams["shrinkage"]
+        opt_hyperparams["k"] = int(opt_hyperparams["k"])
+        opt_hyperparams["min_k"] = int(opt_hyperparams["min_k"])
+        algo = self.algo(sim_options=self.sim_options, **opt_hyperparams)
+        cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
+        return np.mean(cv.get("test_rmse"))

@@ -91,3 +91,19 @@ class MFSVDpp(BaseAlgo):
         )
         cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
         return -np.mean(cv_res.get("test_rmse"))
+
+    def get_test_rmse(self):
+        """
+        Returns the average test rmse of a 5-fold cross-validation on the algorithm with the optimal hyperparameters found by the Gaussian process.
+
+        Returns
+        -------
+        float
+            average of the test rmse of a 5-fold cv.
+
+        """
+        opt_hyperparams = self.get_opt_hyperparams()
+        opt_hyperparams["n_factors"] = int(opt_hyperparams["n_factors"])
+        algo = self.algo(n_epochs=self.n_epochs, biased=self.biased, random_state=self.random_state, **opt_hyperparams)
+        cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
+        return np.mean(cv.get("test_rmse"))
