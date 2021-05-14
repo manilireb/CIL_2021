@@ -3,7 +3,7 @@ from surprise import SVD
 from surprise.model_selection import cross_validate
 
 from algo_base import BaseAlgo
-from names import get_log_file_name_svd as get_log_file_name
+from names import get_log_file_name_mf as get_log_file_name
 
 
 class MFSVD(BaseAlgo):
@@ -84,6 +84,7 @@ class MFSVD(BaseAlgo):
             reg_bu=reg_bu,
             reg_bi=reg_bi,
             reg_pu=reg_pu,
+            random_state=self.random_state,
         )
         cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
         return -np.mean(cv_res.get("test_rmse"))
@@ -100,6 +101,6 @@ class MFSVD(BaseAlgo):
         """
         opt_hyperparams = self.get_opt_hyperparams()
         opt_hyperparams["n_factors"] = int(opt_hyperparams["n_factors"])
-        algo = self.algo(n_epochs=self.n_epochs, biased=self.biased, **opt_hyperparams)
+        algo = self.algo(n_epochs=self.n_epochs, biased=self.biased, **opt_hyperparams, random_state=self.random_state)
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
