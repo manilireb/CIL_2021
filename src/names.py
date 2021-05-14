@@ -31,9 +31,9 @@ def get_log_file_name_knn(algo_name, user_based, sim_name):
     return log_file_name
 
 
-def get_log_file_name_svd(algo_name, biased):
+def get_log_file_name_mf(algo_name, biased):
     """
-    This function returns the name of the json file where the hyperparameters are logged for the svm method.
+    This function returns the name of the json file where the hyperparameters are logged for the matrix factorization based method.
     Its only purpose is to make the constructor more readable.
 
     Parameters
