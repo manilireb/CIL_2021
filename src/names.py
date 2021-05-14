@@ -54,3 +54,24 @@ def get_log_file_name_mf(algo_name, biased):
     log_file_name += method
     log_file_name += ".json"
     return log_file_name
+
+
+def get_log_file_name(algo_name):
+    """
+    This function returns the name of the json file where the hyperparameters are logged for some method.
+    Its only purpose is to make the constructor more readable.
+
+    Parameters
+    ----------
+    algo_name : str
+        Name of the algorithm. E.g. SlopeOne
+
+    Returns
+    -------
+    log_file_name : str
+        Name of the log file.
+
+    """
+    log_file_name = algo_name
+    log_file_name += ".json"
+    return log_file_name
