@@ -7,6 +7,23 @@ from names import get_log_file_name_mf as get_log_file_name
 
 
 class MFNMF(BaseAlgo):
+    """
+    This class provides instantiation of the NMF methods.
+    Take a look at examples/hyperparameters_nmf.py to see how to use it
+
+    Parameters
+    ----------
+    biased : bool
+    Wheter we use the biased method or not.
+    n_epochs : int, optional
+    Number of epochs. The default is 100.
+
+    Returns
+    -------
+    None.
+
+    """
+
     def __init__(self, biased, n_epochs=100):
         super().__init__()
         self.n_epochs = n_epochs
@@ -37,7 +54,21 @@ class MFNMF(BaseAlgo):
             Regularizarion term.
         reg_qi : float
             Regularization term.
-        reg_bu : float
+        reg_bu : float        '''
+
+
+        Parameters
+        ----------
+        biased : TYPE
+            DESCRIPTION.
+        n_epochs : TYPE, optional
+            DESCRIPTION. The default is 100.
+
+        Returns
+        -------
+        None.
+
+        '''
             Regularization term.
         reg_bi : float
             Regularization term.
