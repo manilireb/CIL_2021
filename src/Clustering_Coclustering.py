@@ -53,7 +53,7 @@ class Clustering_Coclustering(BaseAlgo):
 
     def get_test_rmse(self):
         """
-        Returns the average test rmse of a 5-fold cross-validation on the algorithm with the optimal hyperparameters found by the Gaussian process.
+        Returns the average test rmse of a 5-fold cross-validation on the algorithm with the optimal hyperparameters found by the gaussian process.
 
         Returns
         -------
