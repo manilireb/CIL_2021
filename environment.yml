@@ -11,5 +11,6 @@ dependencies:
     - pre-commit
     - isort
     - black
+    - gitpython
 
 
