@@ -1,8 +1,3 @@
-import sys
-
-sys.path.append("../")
-
-
 from surprise import SVD, Dataset, Reader
 from surprise.model_selection import cross_validate
 
