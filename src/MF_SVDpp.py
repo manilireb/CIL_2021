@@ -3,6 +3,7 @@ from surprise import SVDpp
 from surprise.model_selection import cross_validate
 
 from algo_base import BaseAlgo
+from names import get_log_file_name
 
 
 class MFSVDpp(BaseAlgo):
@@ -21,7 +22,7 @@ class MFSVDpp(BaseAlgo):
         super().__init__()
         self.n_epochs = n_epochs
         self.algo = SVDpp
-        self.log_file_name = "SVDpp.json"
+        self.log_file_name = get_log_file_name("SVDpp")
         self.tuning_params = self.tuning_params = {
             "n_factors": [5, 150],
             "lr_bu": [0.001, 0.009],
