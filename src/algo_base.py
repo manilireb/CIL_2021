@@ -7,7 +7,7 @@ from bayes_opt.event import Events
 from bayes_opt.logger import JSONLogger
 from surprise import Dataset, Reader
 
-from data_preprocess import Data
+from utilities.data_preprocess import Data
 
 
 class BaseAlgo(ABC):

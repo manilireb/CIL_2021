@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-
 from SlopeOne.slope_one import Slope_One
 
 """

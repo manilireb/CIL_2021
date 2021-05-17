@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-
 import numpy as np
 from surprise import CoClustering
 from surprise.model_selection import cross_validate

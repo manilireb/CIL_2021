@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-
 from MF_Methods.MF_SVD import MFSVD
 
 """

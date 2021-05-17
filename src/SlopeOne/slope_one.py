@@ -1,8 +1,3 @@
-import sys
-
-sys.path.append("../")
-
-
 from surprise import SlopeOne
 
 from algo_base import BaseAlgo

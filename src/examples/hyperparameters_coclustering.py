@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-
 from Co_Clustering.Clustering_Coclustering import Clustering_Coclustering
 
 """

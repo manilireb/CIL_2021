@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-
 from KNN_Methods.KNN_Basics import KNN_Basic
 
 """
