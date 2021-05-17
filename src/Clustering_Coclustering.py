@@ -61,7 +61,7 @@ class Clustering_Coclustering(BaseAlgo):
             average of the test rmse of a 5-fold cv.
 
         """
-        opt_hyperparams = self.get_opt_hyperparas()
+        opt_hyperparams = self.get_opt_hyperparams()
         opt_hyperparams["n_cltr_u"] = int(opt_hyperparams["n_cltr_u"])
         opt_hyperparams["n_cltr_i"] = int(opt_hyperparams["n_cltr_i"])
         algo = self.algo(n_epochs=self.n_epochs, random_state=self.random_state, **opt_hyperparams)
