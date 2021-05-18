@@ -7,7 +7,7 @@ from bayes_opt.event import Events
 from bayes_opt.logger import JSONLogger
 from surprise import Dataset, Reader
 
-from utilities.data_preprocess import Data
+from utilities.data_preprocess import Data, get_git_root
 
 
 class BaseAlgo(ABC):
@@ -34,7 +34,8 @@ class BaseAlgo(ABC):
         optimizer = BayesianOptimization(
             f=self.optimizer_function, pbounds=self.tuning_params, random_state=self.random_state
         )
-        logger = JSONLogger(path="./logs/" + self.log_file_name)
+        path = get_git_root() + "/logs/" + self.log_file_name
+        logger = JSONLogger(path=path)
         optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)
         optimizer.maximize(init_points=3, n_iter=10)
 
@@ -48,7 +49,7 @@ class BaseAlgo(ABC):
             Dictionary of the optimal hyperparameters found by the Gaussian process. If the hyperparameters were not found yet, then it return an empty dictionary.
 
         """
-        file_name = "../examples/logs/" + self.log_file_name
+        file_name = get_git_root() + "/logs/" + self.log_file_name
         try:
             with open(file_name) as handle:
                 json_data = [json.loads(line) for line in handle]
