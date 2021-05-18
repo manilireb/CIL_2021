@@ -5,15 +5,11 @@ import numpy as np
 import pandas as pd
 
 
-def get_git_root(path):
+def get_git_root():
     """
     The purpose of this function is to avoid FileNotFoundErrors. It just returns the root directory of the git repository.
     Using this function we can load the data in every subdirectory of the repository.
 
-    Parameters
-    ----------
-    path : str
-        Path of the current file.
 
     Returns
     -------
@@ -21,7 +17,7 @@ def get_git_root(path):
         path to the git root directory.
 
     """
-
+    path = os.getcwd()
     git_repo = git.Repo(path, search_parent_directories=True)
     git_root = git_repo.git.rev_parse("--show-toplevel")
     return git_root
@@ -40,7 +36,7 @@ class Data:
     """
 
     def __init__(self, filename="data_train.csv"):
-        self.dir = get_git_root(os.getcwd())
+        self.dir = get_git_root()
         self.dir += "/data/"
         self.filename = self.dir + filename
         self.n_users = 10000
