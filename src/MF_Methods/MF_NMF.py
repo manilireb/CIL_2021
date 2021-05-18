@@ -24,11 +24,12 @@ class MFNMF(BaseAlgo):
 
     """
 
-    def __init__(self, biased, n_epochs=100):
+    def __init__(self, biased):
         super().__init__()
-        self.n_epochs = n_epochs
+
         self.biased = biased
         self.tuning_params = {
+            "n_epochs": [5, 400],
             "n_factors": [1, 150],
             "reg_pu": [0.01, 0.9],
             "reg_qi": [0.01, 0.9],
@@ -40,7 +41,7 @@ class MFNMF(BaseAlgo):
         self.algo = NMF
         self.log_file_name = get_log_file_name("NMF", biased)
 
-    def optimizer_function(self, n_factors, reg_pu, reg_qi, reg_bu, reg_bi, lr_bu, lr_bi):
+    def optimizer_function(self, n_epochs, n_factors, reg_pu, reg_qi, reg_bu, reg_bi, lr_bu, lr_bi):
         """
         Function that gets optimized by the gaussian process.
         The function returns (-1) times the mean of a 5-fold crossvalidation on the specified hyperparameters.
@@ -48,6 +49,8 @@ class MFNMF(BaseAlgo):
 
         Parameters
         ----------
+        n_epochs : int
+            The number of epochs.
         n_factors : int
             The number of factors.
         reg_pu : float
@@ -86,7 +89,7 @@ class MFNMF(BaseAlgo):
 
         algo = self.algo(
             n_factors=int(n_factors),
-            n_epochs=self.n_epochs,
+            n_epochs=int(n_epochs),
             biased=self.biased,
             reg_pu=reg_pu,
             reg_qi=reg_qi,
@@ -111,6 +114,7 @@ class MFNMF(BaseAlgo):
         """
         opt_hyperparams = self.get_opt_hyperparams()
         opt_hyperparams["n_factors"] = int(opt_hyperparams["n_factors"])
-        algo = self.algo(n_epochs=self.n_epochs, biased=self.biased, **opt_hyperparams, random_state=self.random_state)
+        opt_hyperparams["n_epochs"] = int(opt_hyperparams["n_epochs"])
+        algo = self.algo(biased=self.biased, **opt_hyperparams, random_state=self.random_state)
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
