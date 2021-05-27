@@ -1,12 +1,12 @@
-python 
-pip
-numpy 
-scipy 
-pandas 
-matplotlib 
-scikit-surprise 
-bayesian-optimization 
-pre-commit 
-isort
-black 
-gitpython 
+python == 3.9.4
+pip == 21.0.1
+numpy == 1.19.2
+scipy == 1.6.2
+pandas == 1.2.4 
+matplotlib == 3.3.4
+scikit-surprise == 1.1.1
+bayesian-optimization == 1.2.0
+pre-commit == 2.12.1
+isort == 5.8.0
+black == 21.5b1
+gitpython == 3.1.17
