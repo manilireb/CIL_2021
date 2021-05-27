@@ -50,19 +50,15 @@ class BaseAlgo(ABC):
 
         """
         file_name = get_git_root() + "/logs/" + self.log_file_name
-        try:
-            with open(file_name) as handle:
-                json_data = [json.loads(line) for line in handle]
+        with open(file_name) as handle:
+            json_data = [json.loads(line) for line in handle]
 
-            rmse = []
-            for dic in json_data:
-                rmse.append(dic.get("target"))
+        rmse = []
+        for dic in json_data:
+            rmse.append(dic.get("target"))
 
-            index = np.argmax(rmse)
-            return json_data[index].get("params")
-        except:
-            print("The file doesn't exist since you not optimized your hyperparameters yet!")
-            return dict()
+        index = np.argmax(rmse)
+        return json_data[index].get("params")
 
     @abstractmethod
     def get_test_rmse(self):
