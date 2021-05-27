@@ -7,5 +7,5 @@ scikit-surprise == 1.1.1
 bayesian-optimization == 1.2.0
 pre-commit == 2.12.1
 isort == 5.8.0
-black == 21.5b1
+black == 20.8b1
 gitpython == 3.1.17
