@@ -99,7 +99,7 @@ class MFNMF(BaseAlgo):
             lr_bi=lr_bi,
             random_state=self.random_state,
         )
-        cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=True)
+        cv_res = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return -np.mean(cv_res.get("test_rmse"))
 
     def get_test_rmse(self):
