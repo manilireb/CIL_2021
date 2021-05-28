@@ -34,3 +34,39 @@ Before running make sure that the source directory is recognized by your PYTHONP
 export PYTHONPATH=/path_to_source_directory/CIL_2021:$PYTHONPATH
 export PYTHONPATH=/path_to_source_directory/CIL_2021/src:$PYTHONPATH
 ```
+### Using Leonhard Cluster
+To run code on the Leonhard cluster follow these steps.
+#### Login
+```
+ssh _your_nethz_username_@login.leonhard.ethz.ch
+```
+#### Setup
+If you're logged in for the first time, go to your home directory and clone the repository.
+```
+cd home
+git clone https://github.com/manilireb/CIL_2021.git
+```
+You should now have a folder called `CIL_2021`. Go to this folder and pull the latest version 
+```
+cd CIL_2021
+git pull origin main 
+```
+If you're logged in for the first time, you have to create a virtual environment 
+```
+python 3 -m venv ~/CIL_2021/venv
+```
+Now run the `init_leonhard.sh` script 
+```
+source ./init_leonhard.sh 
+```
+Now you should be ready to run code on the cluster
+#### Execute code
+Run your batch jobs using
+```
+bsub -R "rusage[ngpus_excl_p=1, mem=64000]" python _your_file_.py
+```
+check some useful informations on your job using 
+```
+bjobs
+```
+
