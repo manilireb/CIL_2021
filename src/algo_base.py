@@ -37,7 +37,7 @@ class BaseAlgo(ABC):
         path = get_git_root() + "/logs/" + self.log_file_name
         logger = JSONLogger(path=path)
         optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)
-        optimizer.maximize(init_points=3, n_iter=10)
+        optimizer.maximize(init_points=7, n_iter=20)
 
     def get_opt_hyperparams(self):
         """
