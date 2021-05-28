@@ -63,7 +63,7 @@ Now you should be ready to run code on the cluster
 #### Execute code
 Run your batch jobs using
 ```
-bsub -R "rusage[mem=64000]" python _your_file_.py
+bsub -R "rusage[ngpus_excl_p=1, mem=64000]" python _your_file_.py
 ```
 check some useful informations on your job using 
 ```
