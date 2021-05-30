@@ -2,7 +2,7 @@
 from timeit import default_timer as timer
 
 import numpy as np
-from numba import cuda, jit
+from numba import jit
 
 
 # normal function to run on cpu
