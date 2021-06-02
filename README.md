@@ -34,7 +34,8 @@ Before running make sure that the source directory is recognized by your PYTHONP
 export PYTHONPATH=/path_to_source_directory/CIL_2021:$PYTHONPATH
 export PYTHONPATH=/path_to_source_directory/CIL_2021/src:$PYTHONPATH
 ```
-### Using Leonhard Cluster
+### Using Leonhard Cluster  
+Make sure you are connected to VPN before using the cluster.  
 To run code on the Leonhard cluster follow these steps.
 #### Login
 ```
