@@ -54,7 +54,8 @@ git pull origin main
 ```
 If you're logged in for the first time, you have to create a virtual environment 
 ```
-python 3 -m venv ~/CIL_2021/venv
+module load python_cpu/3.6.1
+python3 -m venv ~/CIL_2021/venv
 ```
 Now run the `init_leonhard.sh` script 
 ```
