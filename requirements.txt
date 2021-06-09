@@ -9,4 +9,3 @@ pre-commit == 2.12.1
 isort == 5.8.0
 black == 20.8b1
 gitpython == 3.1.17
-numba == 0.53.1
