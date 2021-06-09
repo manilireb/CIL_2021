@@ -56,6 +56,7 @@ If you're logged in for the first time, you have to create a virtual environment
 ```
 module load python_cpu/3.6.1
 python3 -m venv ~/CIL_2021/venv
+pip install --upgrade pip
 ```
 Now run the `init_leonhard.sh` script 
 ```
