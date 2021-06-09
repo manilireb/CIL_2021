@@ -69,7 +69,7 @@ bsub -R "rusage[mem=64000]" -n 5 -W 5:00 python _your_file_.py
 ```
 The command above submits a jobs using 5 cores with each 64000 MB with a time limit of 5 hours.  
 The more resources are required, the longer it takes to schedule your job.  
-check some useful informations on your job using 
+Check some useful informations on your job using 
 ```
 bjobs
 ```
