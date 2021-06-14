@@ -56,6 +56,7 @@ If you're logged in for the first time, you have to create a virtual environment
 ```
 module load python_cpu/3.6.1
 python3 -m venv ~/CIL_2021/venv
+pip install --upgrade pip
 ```
 Now run the `init_leonhard.sh` script 
 ```
@@ -68,8 +69,8 @@ Run your batch jobs using
 bsub -R "rusage[mem=64000]" -n 5 -W 5:00 python _your_file_.py
 ```
 The command above submits a jobs using 5 cores with each 64000 MB with a time limit of 5 hours.  
-The more resources are required, the it takes to schedule your job.  
-check some useful informations on your job using 
+The more resources are required, the longer it takes to schedule your job.  
+Check some useful informations on your job using 
 ```
 bjobs
 ```
