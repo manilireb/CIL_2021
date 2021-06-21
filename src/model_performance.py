@@ -53,5 +53,4 @@ if __name__ == "__main__":
     with open("model_performance.txt", "w") as f:
         for tup in test_rmses_with_names:
             line = tup[1] + " : " + str(tup[0])
-            f.write(line)
             f.write("\n")
