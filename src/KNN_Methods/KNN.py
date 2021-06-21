@@ -66,8 +66,11 @@ class KNN_Basis(BaseAlgo):
         opt_hyperparams = self.get_opt_hyperparams()
         self.sim_options["min_support"] = int(opt_hyperparams["min_support"])
         del opt_hyperparams["min_support"]
-        self.sim_options["shrinkage"] = int(opt_hyperparams["shrinkage"])
-        del opt_hyperparams["shrinkage"]
+
+        if self.sim_name == "pearson_baseline":
+            self.sim_options["shrinkage"] = int(opt_hyperparams["shrinkage"])
+            del opt_hyperparams["shrinkage"]
+
         opt_hyperparams["k"] = int(opt_hyperparams["k"])
         opt_hyperparams["min_k"] = int(opt_hyperparams["min_k"])
         algo = self.algo(sim_options=self.sim_options, **opt_hyperparams)
