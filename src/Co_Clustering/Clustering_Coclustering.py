@@ -63,7 +63,7 @@ class Clustering_Coclustering(BaseAlgo):
 
         """
         opt_hyperparams = self.get_opt_hyperparams()
-        opt_hyperparams["n_epochs"] = int(opt_hyperparams)["n_epochs"]
+        opt_hyperparams["n_epochs"] = int(opt_hyperparams["n_epochs"])
         opt_hyperparams["n_cltr_u"] = int(opt_hyperparams["n_cltr_u"])
         opt_hyperparams["n_cltr_i"] = int(opt_hyperparams["n_cltr_i"])
         algo = self.algo(**opt_hyperparams, random_state=self.random_state)
