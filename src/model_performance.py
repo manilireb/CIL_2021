@@ -48,7 +48,7 @@ if __name__ == "__main__":
         name = mod.log_file_name[:-5]
         test_rmses_with_names.append((test_rmse, name))
 
-    test_rmses_with_names.sort(key=lambda tup: tup[0], reverse=True)
+    test_rmses_with_names.sort(key=lambda tup: tup[0])
 
     with open("model_performance.txt", "w") as f:
         for tup in test_rmses_with_names:
