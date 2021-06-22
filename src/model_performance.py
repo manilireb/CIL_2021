@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     test_rmses_with_names.sort(key=lambda tup: tup[0])
 
-    with open("model_performance.txt", "w") as f:
+    with open("model_performances.txt", "w") as f:
         for tup in test_rmses_with_names:
             line = tup[1] + " : " + str(tup[0])
             f.write(line)
