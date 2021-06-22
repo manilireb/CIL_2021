@@ -76,3 +76,26 @@ class KNN_Basis(BaseAlgo):
         algo = self.algo(sim_options=self.sim_options, **opt_hyperparams)
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
+
+    def get_opt_model(self):
+        """
+        Returns the optimal model given by the trained hyperparams
+
+        Returns
+        -------
+        algo : prediction_algorithms
+            The Surprise KNN model with the optimal hyperparams
+
+        """
+        opt_hyperparams = self.get_opt_hyperparams()
+        self.sim_options["min_support"] = int(opt_hyperparams["min_support"])
+        del opt_hyperparams["min_support"]
+
+        if self.sim_name == "pearson_baseline":
+            self.sim_options["shrinkage"] = int(opt_hyperparams["shrinkage"])
+            del opt_hyperparams["shrinkage"]
+
+        opt_hyperparams["k"] = int(opt_hyperparams["k"])
+        opt_hyperparams["min_k"] = int(opt_hyperparams["min_k"])
+        algo = self.algo(sim_options=self.sim_options, **opt_hyperparams)
+        return algo

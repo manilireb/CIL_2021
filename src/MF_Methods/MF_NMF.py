@@ -118,3 +118,19 @@ class MFNMF(BaseAlgo):
         algo = self.algo(biased=self.biased, **opt_hyperparams, random_state=self.random_state)
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
+
+    def get_opt_model(self):
+        """
+        Returns the optimal model given by the trained hyperparams
+
+        Returns
+        -------
+        algo : prediction_algorithms
+            The Surprise NMF model with the optimal hyperparams
+
+        """
+        opt_hyperparams = self.get_opt_hyperparams()
+        opt_hyperparams["n_factors"] = int(opt_hyperparams["n_factors"])
+        opt_hyperparams["n_epochs"] = int(opt_hyperparams["n_epochs"])
+        algo = self.algo(biased=self.biased, **opt_hyperparams, random_state=self.random_state)
+        return algo

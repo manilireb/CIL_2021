@@ -69,3 +69,20 @@ class Clustering_Coclustering(BaseAlgo):
         algo = self.algo(**opt_hyperparams, random_state=self.random_state)
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
+
+    def get_opt_model(self):
+        """
+        Returns the optimal model given by the trained hyperparams
+
+        Returns
+        -------
+        algo : prediction_algorithms.co_clustering.CoClustering
+            The Surprise CoClustering model with the optimal hyperparams
+
+        """
+        opt_hyperparams = self.get_opt_hyperparams()
+        opt_hyperparams["n_epochs"] = int(opt_hyperparams["n_epochs"])
+        opt_hyperparams["n_cltr_u"] = int(opt_hyperparams["n_cltr_u"])
+        opt_hyperparams["n_cltr_i"] = int(opt_hyperparams["n_cltr_i"])
+        algo = self.algo(**opt_hyperparams, random_state=self.random_state)
+        return algo

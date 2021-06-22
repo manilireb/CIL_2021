@@ -63,3 +63,7 @@ class BaseAlgo(ABC):
     @abstractmethod
     def get_test_rmse(self):
         pass
+
+    @abstractmethod
+    def get_opt_model(self):
+        pass

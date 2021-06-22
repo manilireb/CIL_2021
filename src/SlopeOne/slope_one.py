@@ -42,3 +42,16 @@ class Slope_One(BaseAlgo):
         algo = self.algo()
         cv = cross_validate(algo, self.data, measures=["rmse"], cv=5, n_jobs=-1, verbose=False)
         return np.mean(cv.get("test_rmse"))
+
+    def get_opt_model(self):
+        """
+        Returns the optimal model given by the trained hyperparams
+
+        Returns
+        -------
+        algo : prediction_algorithms
+            The Surprise SlopeOne model with the optimal hyperparams
+
+        """
+        algo = self.algo()
+        return algo
