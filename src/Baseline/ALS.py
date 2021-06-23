@@ -129,7 +129,7 @@ class ALS:
 
         for train_index, test_index in kf.split(self.data_matrix):
             train_ratings, test_ratings = self.data_matrix[train_index], self.data_matrix[test_index]
-            self.fit(train_ratings, num_epochs, num_features, lambda_user, lambda_item)
+            self.fit(train_ratings, int(num_epochs), int(num_features), lambda_user, lambda_item)
             test_rmse = self.get_test_rmse(test_ratings)
             test_RMSE_list.append(test_rmse)
 
