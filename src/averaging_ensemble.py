@@ -69,4 +69,4 @@ if __name__ == "__main__":
     pred_array = np.array(predictions)
     final_prediction = pred_array.sum()/pred_array.size()
 
-    accuracy.rmse(final_prediction, verbose= True)
+    print(accuracy.rmse(final_prediction, verbose= True))
