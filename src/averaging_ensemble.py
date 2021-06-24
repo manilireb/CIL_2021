@@ -16,6 +16,8 @@ from SlopeOne.slope_one import Slope_One
 
 if __name__ == "__main__":
 
+    f = open("averaging_output.txt", "w")
+
     df = Data.get_df()
     reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(df[["userID", "itemID", "rating"]], reader)
@@ -58,15 +60,16 @@ if __name__ == "__main__":
     predictions = []
 
     for model in models:
-        print('fitting model ' + model.log_file_name[:-5])
+        f.write('fiting model ' + model.log_file_name[:-5] + '\n')
         m = model.get_opt_model()
         m.fit(trainset)
         test_pred = m.test(testset)
         predictions.append(test_pred)
-        print('FINISHED fitting model ' + model.log_file_name[:-5] + ' predictions now: ')
-        print(*predictions)
+        f.write('FINISHED fitting model ' + model.log_file_name[:-5] + ' predictions now: \n')
+        f.write(*predictions + '\n')
 
     pred_array = np.array(predictions)
     final_prediction = pred_array.sum()/pred_array.size()
 
-    print(accuracy.rmse(final_prediction, verbose= True))
+    f.write(accuracy.rmse(str(final_prediction, verbose= True) + '\n')
+    f.close()
