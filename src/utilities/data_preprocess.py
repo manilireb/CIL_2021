@@ -3,6 +3,7 @@ import os
 import git
 import numpy as np
 import pandas as pd
+import scipy.sparse as sp
 
 
 def get_git_root():
@@ -126,3 +127,11 @@ class Data:
         df = pd.DataFrame(data_np)
         df.columns = ["userID", "itemID", "rating"]
         return df
+
+    def get_sparse_ratings_matrix(self):
+        data = self.load_data()
+        userID, itemID = self.get_user_and_item_ids(data)
+        ratings = data[:, 1]
+        data_matrix = sp.lil_matrix((self.n_users, self.n_items))
+        data_matrix[userID, itemID] = ratings
+        return data_matrix
