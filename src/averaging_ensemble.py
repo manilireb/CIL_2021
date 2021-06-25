@@ -71,5 +71,5 @@ if __name__ == "__main__":
     pred_array = np.array(predictions)
     final_prediction = pred_array.sum()/pred_array.size()
 
-    f.write(accuracy.rmse(str(final_prediction, verbose= True) + '\n')
+    f.write(str(accuracy.rmse(final_prediction, verbose= True)) + '\n')
     f.close()
