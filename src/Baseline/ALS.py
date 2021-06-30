@@ -51,9 +51,9 @@ class ALS:
         self.user_matrix = None
         self.item_matrix = None
         self.tuning_params = {
-            "num_features": [5, 50],
-            "lambda_user": [0.0005, 1.0],
-            "lambda_item": [0.0005, 1.0],
+            "num_features": [2, 50],
+            "lambda_user": [0.0005, 30.0],
+            "lambda_item": [0.0005, 30.0],
         }
 
     def init_matrix(self, train, num_features):
