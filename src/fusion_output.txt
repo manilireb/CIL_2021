@@ -1,0 +1,20 @@
+Averaging of the following models: 
+KNNWithMeansItemPearsonBaseline
+KNNWithZScoreItemPearsonBaseline
+NMFUnBiased
+KNNWithZScoreItemPearson
+KNNWithMeansItemPearson
+SVDBiased
+KNNWithMeansItemPearsonBaseline
+KNNWithZScoreItemPearsonBaseline
+NMFUnBiased
+KNNWithZScoreItemPearson
+KNNWithMeansItemPearson
+SVDBiased
+KNNWithMeansItemPearsonBaseline
+KNNWithZScoreItemPearsonBaseline
+NMFUnBiased
+KNNWithZScoreItemPearson
+KNNWithMeansItemPearson
+SVDBiased
+3-fold RMSE of the fusion: 0.9897456138346888
