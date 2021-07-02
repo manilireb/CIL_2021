@@ -46,5 +46,5 @@ if __name__ == "__main__":
         rmse = np.sqrt(np.sum((fusion - ground_truth) ** 2) / len(test))
         cv_rmse.append(rmse)
 
-    f.write("3-fold RMSE of the fusion: " + str(sum(cv_rmse) / 5) + "\n")
+    f.write("5-fold RMSE of the fusion: " + str(sum(cv_rmse) / 5) + "\n")
     f.close()
