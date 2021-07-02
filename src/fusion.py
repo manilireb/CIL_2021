@@ -28,20 +28,23 @@ if __name__ == "__main__":
 
     cv_rmse = []
 
-    kf = KFold(n_splits=3)
+    kf = KFold(n_splits=5)
+    verbose = True
     for train, test in kf.split(data):
         predictions = []
         for model in models:
-            f.write(model.log_file_name[:-5] + "\n")
+            if verbose:
+                f.write(model.log_file_name[:-5] + "\n")
             m = model.get_opt_model()
             p = m.fit(train).test(test)
             test_pred = [pred[3] for pred in p]
             predictions.append(test_pred)
+        verbose = False
         pred_array = np.array(predictions).T
         fusion = np.mean(pred_array, axis=1)
         ground_truth = np.array([pred[2] for pred in p])
         rmse = np.sqrt(np.sum((fusion - ground_truth) ** 2) / len(test))
         cv_rmse.append(rmse)
 
-    f.write("3-fold RMSE of the fusion: " + str(sum(cv_rmse) / 3) + "\n")
+    f.write("3-fold RMSE of the fusion: " + str(sum(cv_rmse) / 5) + "\n")
     f.close()

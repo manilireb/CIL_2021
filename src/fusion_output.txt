@@ -5,16 +5,4 @@ NMFUnBiased
 KNNWithZScoreItemPearson
 KNNWithMeansItemPearson
 SVDBiased
-KNNWithMeansItemPearsonBaseline
-KNNWithZScoreItemPearsonBaseline
-NMFUnBiased
-KNNWithZScoreItemPearson
-KNNWithMeansItemPearson
-SVDBiased
-KNNWithMeansItemPearsonBaseline
-KNNWithZScoreItemPearsonBaseline
-NMFUnBiased
-KNNWithZScoreItemPearson
-KNNWithMeansItemPearson
-SVDBiased
-3-fold RMSE of the fusion: 0.9897456138346888
+5-fold RMSE of the fusion: 0.985948590415411
