@@ -289,10 +289,10 @@ class ALS:
         Returns
         -------
         float
-            mean rmse of a 3-fold cv.
+            mean rmse of a 5-fold cv.
 
         """
-        cv = 3
+        cv = 5
         kf = KFold(n_splits=cv, random_state=self.random_state, shuffle=True)
         test_RMSE_list = []
         for train_indices, test_indices in kf.split(self.indices):
