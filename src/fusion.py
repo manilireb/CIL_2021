@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     cv_rmse = []
 
-    kf = KFold(n_splits=5)
+    kf = KFold(n_splits=5, random_state=42)
     verbose = True
     for train, test in kf.split(data):
         predictions = []
