@@ -1,3 +1,4 @@
+Ensemble (Averaging of the best 6 models) : 0.985948590415411
 KNNWithMeansItemPearsonBaseline : 0.9902371727515126
 KNNWithZScoreItemPearsonBaseline : 0.9905460996281807
 NMFUnBiased : 0.9918880023157112
