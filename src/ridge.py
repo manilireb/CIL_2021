@@ -95,8 +95,8 @@ if __name__ == "__main__":
     pred_array_submission = np.array(predictions).T
     UID = np.array(UID).T
     IID = np.array(IID).T
-    UID = UID[:,0]
-    IID = IID[:,0]
+    UID = UID[:,0]+1
+    IID = IID[:,0]+1
     
     y_hat = regressor.predict(pred_array_submission) #applying ridge regression
 
