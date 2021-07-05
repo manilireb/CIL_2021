@@ -10,7 +10,7 @@ from utilities.data_preprocess import Data
 
 if __name__ == "__main__":
 
-    df = Data.get_df()
+    df = Data().get_df()
     reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(df[["userID", "itemID", "rating"]], reader)
 
