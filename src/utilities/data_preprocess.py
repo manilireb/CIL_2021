@@ -105,10 +105,9 @@ class Data:
         itemID -= 1
         return userID, itemID
 
-    @staticmethod
-    def get_df():
+    def get_df(self):
         """
-        Static method that returns the pandas dataframe that
+        Method that returns the pandas dataframe that
         can be used by the surprise library for custom datasets
 
         Returns
@@ -118,10 +117,8 @@ class Data:
             columns
 
         """
-
-        D = Data()
-        data = D.load_data()
-        userID, itemID = D.get_user_and_item_ids(data)
+        data = self.load_data()
+        userID, itemID = self.get_user_and_item_ids(data)
         rating = data[:, 1]
         data_np = np.stack((userID, itemID, rating), axis=-1)
         df = pd.DataFrame(data_np)

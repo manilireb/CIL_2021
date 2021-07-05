@@ -16,7 +16,7 @@ class BaseAlgo(ABC):
     """
 
     def __init__(self):
-        df = Data.get_df()
+        df = Data().get_df()
         reader = Reader(rating_scale=(1, 5))
         self.data = Dataset.load_from_df(df[["userID", "itemID", "rating"]], reader)
         self.tuning_params = None
