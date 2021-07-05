@@ -32,11 +32,10 @@ from KNN_Methods.KNN_WithZScore import KNN_WithZScore
 from MF_Methods.MF_NMF import MFNMF
 from MF_Methods.MF_SVD import MFSVD
 from utilities.data_preprocess import Data
-from utilities.data_preprocess_submission import Data_submission
 
 if __name__ == "__main__":
 
-    df = Data.get_df()
+    df = Data().get_df()
     reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(df[["userID", "itemID", "rating"]], reader)
 
@@ -70,7 +69,7 @@ if __name__ == "__main__":
     
     
     # loading and preparing prediction set
-    df_submission_test = Data_submission.get_df()
+    df_submission_test = Data("sampleSubmission.cvs").get_df()
     data_submission_test = Dataset.load_from_df(df_submission_test[["userID", "itemID", "rating"]], reader)
     submission_full_train = data_submission_test.build_full_trainset()
     submission_full_testset = submission_full_train.build_testset()
