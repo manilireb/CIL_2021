@@ -1,4 +1,7 @@
-Ensemble (Averaging of the best 6 models) : 0.985948590415411
+RMSE of our models. The first number is the result of a 5-fold cv on the train set. If the model contains a second number, this means we submitted the number on Kaggle and therefore have also a score on the public test set.
+
+Ensemble (Ridge of the best 6 models, basemodels trained on 0.7 of the data. Ridge is trained on the rest) : N/A, 0.97806
+Ensemble (Averaging of the best 6 models) : 0.985948590415411, 0.98133.
 KNNWithMeansItemPearsonBaseline : 0.9902371727515126
 KNNWithZScoreItemPearsonBaseline : 0.9905460996281807
 NMFUnBiased : 0.9918880023157112
