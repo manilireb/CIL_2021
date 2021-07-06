@@ -69,7 +69,7 @@ if __name__ == "__main__":
     
     
     # loading and preparing prediction set
-    df_submission_test = Data("sampleSubmission.cvs").get_df()
+    df_submission_test = Data("sampleSubmission.csv").get_df()
     data_submission_test = Dataset.load_from_df(df_submission_test[["userID", "itemID", "rating"]], reader)
     submission_full_train = data_submission_test.build_full_trainset()
     submission_full_testset = submission_full_train.build_testset()
