@@ -39,15 +39,13 @@ class ALS:
     """
 
     def __init__(self):
-        D = Data()
-        self.data_matrix = D.get_sparse_ratings_matrix()
+        self.data_matrix = Data().get_sparse_ratings_matrix()
         self.nnz_users, self.nnz_items = self.data_matrix.nonzero()
         self.indices = np.arange(self.nnz_users.shape[0])
         self.num_users = 10000
         self.num_items = 1000
         self.num_epochs = 30
         self.random_state = 42
-        np.random.seed(self.random_state)
         self.user_matrix = None
         self.item_matrix = None
         self.tuning_params = {
@@ -55,6 +53,7 @@ class ALS:
             "lambda_user": [0.0005, 30.0],
             "lambda_item": [0.0005, 30.0],
         }
+        np.random.seed(self.random_state)
 
     def init_matrix(self, train, num_features):
         """
