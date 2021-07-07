@@ -3,17 +3,18 @@ import scipy.sparse as sp
 from bayes_opt import BayesianOptimization
 from bayes_opt.event import Events
 from bayes_opt.logger import JSONLogger
+from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.model_selection import KFold
 from tqdm import tqdm
 
 from utilities.data_preprocess import Data, get_git_root
 
 
-class ALS:
+class ALS(BaseEstimator, TransformerMixin):
     """
     Class for the ALS baseline algorithm.
 
-    Members
+    Parameters
     --------
     data_matrix : sparse.lil.lil_matrix
         The data matrix.
@@ -84,6 +85,7 @@ class ALS:
     def update_user_matrix(self, data, user_matrix, item_matrix, num_features, lambda_user):
         """
         Method for update the user matrix.
+
 
         Parameters
         ----------
