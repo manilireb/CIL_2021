@@ -70,6 +70,7 @@ if __name__ == "__main__":
         m = model.get_opt_model()
         p = m.fit(train).test(test)
         test_pred = [pred[3] for pred in p]
+        predictions.append(test_pred)
 
     pred_array_submission = np.array(predictions).T
     UID = np.array([pred[0] for pred in p])
