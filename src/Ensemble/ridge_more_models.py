@@ -73,8 +73,8 @@ if __name__ == "__main__":
         predictions.append(test_pred)
 
     pred_array_submission = np.array(predictions).T
-    UID = np.array([pred[0] for pred in p])
-    IID = np.array([pred[1] for pred in p])
+    UID = np.array([pred[0] for pred in p]) + 1
+    IID = np.array([pred[1] for pred in p]) + 1
 
     y_hat = regressor.predict(pred_array_submission)  # applying ridge regression
 
