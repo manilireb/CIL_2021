@@ -1,6 +1,8 @@
-RMSE of our models. The first number is the result of a 5-fold cv on the train set. If the model contains a second number, this means we submitted the number on Kaggle and therefore have also a score on the public test set.
+RMSE of our models. The first number is the result of a 5-fold cv on the train set. If the model has a second number, then this number is the RMSE on the public test set on Kaggle.
 
-Ensemble (Ridge of the best 6 models, basemodels trained on 0.7 of the data. Ridge is trained on the rest) : N/A, 0.97806
+Ensemble (Ridge of the best 17 models): N/A, 0.97623
+Ensemble (mlp regressor of the best 6 models): N/A, 0.97758
+Ensemble (Ridge of the best 6 models) : N/A, 0.97806
 Ensemble (Averaging of the best 6 models) : 0.985948590415411, 0.98133.
 KNNWithMeansItemPearsonBaseline : 0.9902371727515126
 KNNWithZScoreItemPearsonBaseline : 0.9905460996281807
