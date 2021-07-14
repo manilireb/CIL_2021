@@ -1,3 +1,9 @@
+RMSE of our models. The first number is the result of a 5-fold cv on the train set. If the model has a second number, then this number is the RMSE on the public test set on Kaggle.
+
+Ensemble (Ridge of the best 17 models): N/A, 0.97623
+Ensemble (mlp regressor of the best 6 models): N/A, 0.97758
+Ensemble (Ridge of the best 6 models) : N/A, 0.97806
+Ensemble (Averaging of the best 6 models) : 0.985948590415411, 0.98133.
 KNNWithMeansItemPearsonBaseline : 0.9902371727515126
 KNNWithZScoreItemPearsonBaseline : 0.9905460996281807
 NMFUnBiased : 0.9918880023157112
@@ -5,6 +11,7 @@ KNNWithZScoreItemPearson : 0.9923419273099743
 KNNWithMeansItemPearson : 0.9926064582975093
 SVDBiased : 0.9943929035315072
 KNNWithMeansItemMsd : 0.9949091672407213
+ALS (Baseline) : 0.9949885168912104
 KNNWithZScoreItemMsd : 0.9958330647964078
 KNNWithZScoreUserPearsonBaseline : 0.9971191626758955
 KNNWithMeansUserPearsonBaseline : 0.9987547896350403
