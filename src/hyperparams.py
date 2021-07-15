@@ -52,4 +52,4 @@ if __name__ == "__main__":
         for tup in hyperparameters_with_names:
             line = tup[1] + " & " + str(tup[0])
             f.write(line)
-            f.write("\n")
+            f.write("\\\\ \n")
