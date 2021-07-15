@@ -1,7 +1,9 @@
 RMSE of our models. The first number is the result of a 5-fold cv on the train set. If the model has a second number, then this number is the RMSE on the public test set on Kaggle.
 
+Ensemble (Linear Combination of MLP and Ridge with 17 models): N/A, 0.97552
+Ensemble (MLP of the best 17 models): N/A, 0.97555.
 Ensemble (Ridge of the best 17 models): N/A, 0.97623
-Ensemble (mlp regressor of the best 6 models): N/A, 0.97758
+Ensemble (MLP regressor of the best 6 models): N/A, 0.97758
 Ensemble (Ridge of the best 6 models) : N/A, 0.97806
 Ensemble (Averaging of the best 6 models) : 0.985948590415411, 0.98133.
 KNNWithMeansItemPearsonBaseline : 0.9902371727515126
