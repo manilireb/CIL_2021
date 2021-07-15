@@ -6,6 +6,7 @@ from surprise import Dataset, Reader
 from surprise.model_selection import train_test_split
 
 from Co_Clustering.Clustering_Coclustering import Clustering_Coclustering
+from KNN_Methods.KNN_Basics import KNN_Basic
 from KNN_Methods.KNN_WithMeans import KNN_WithMeans
 from KNN_Methods.KNN_WithZScore import KNN_WithZScore
 from MF_Methods.MF_NMF import MFNMF
@@ -37,6 +38,19 @@ if __name__ == "__main__":
         KNN_WithMeans(sim_name="pearson", user_based=True),
         KNN_WithZScore(sim_name="msd", user_based=True),
         Clustering_Coclustering(),
+        KNN_WithZScore(sim_name="cosine", user_based=True),
+        KNN_WithMeans(sim_name="msd", user_based=True),
+        KNN_WithMeans(sim_name="cosine", user_based=True),
+        MFSVD(biased=False),
+        KNN_Basic(sim_name="msd", user_based=True),
+        MFNMF(biased=False),
+        KNN_Basic(sim_name="pearson_baseline", user_based=True),
+        KNN_Basic(sim_name="cosine", user_based=True),
+        KNN_Basic(sim_name="pearson", user_based=True),
+        KNN_Basic(sim_name="msd", user_based=False),
+        KNN_Basic(sim_name="pearson_baseline", user_based=False),
+        KNN_Basic(sim_name="pearson", user_based=False),
+        KNN_Basic(sim_name="cosine", user_based=False),
     ]
 
     # getting prediction of models
@@ -50,6 +64,11 @@ if __name__ == "__main__":
         predictions.append(test_pred)
     pred_array = np.array(predictions).T
     ground_truth = np.array([pred[2] for pred in p])
+
+    # store pred_array in a csv file
+    with open("Ensemble_Features.csv") as f:
+        writer = csv.writer(f)
+        writer.writerows(pred_array)
 
     # using CV to learn optimal alpha for Ridge regression default is leave one out CV
     alphas = np.logspace(-3, np.log10(10), 1000)
