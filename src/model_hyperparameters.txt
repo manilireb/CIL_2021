@@ -1,0 +1,29 @@
+CoClustering & {'n_cltr_i': 71.09918520180851, 'n_cltr_u': 3.0378649352844422, 'n_epochs': 388.11439160398777}\\ 
+NMFBiased & {'lr_bi': 0.012309744415187486, 'lr_bu': 0.031980849847461454, 'n_epochs': 364.8690576034616, 'n_factors': 108.6329166518434, 'reg_bi': 0.15972063235131223, 'reg_bu': 0.01, 'reg_pu': 0.27881930328250143, 'reg_qi': 0.4067216032906056}\\ 
+NMFUnBiased & {'lr_bi': 0.07097816189291287, 'lr_bu': 0.013214019700258189, 'n_epochs': 374.4103906115876, 'n_factors': 48.8747412883062, 'reg_bi': 0.5418530722388298, 'reg_bu': 0.8416766896731603, 'reg_pu': 0.21073344043136966, 'reg_qi': 0.03045562386535476}\\ 
+SVDBiased & {'lr_bi': 0.0014163513368102582, 'lr_bu': 0.009, 'lr_pu': 0.009, 'lr_qi': 0.001, 'n_epochs': 199.3983352255967, 'n_factors': 150.0, 'reg_bi': 0.01, 'reg_bu': 0.9, 'reg_pu': 0.01, 'reg_qi': 0.9}\\ 
+SVDUnBiased & {'lr_bi': 0.0014795577017983463, 'lr_bu': 0.00752650619788, 'lr_pu': 0.007440465809730686, 'lr_qi': 0.007191646824922227, 'n_epochs': 172.37783201356092, 'n_factors': 10.482815006230844, 'reg_bi': 0.8393524001363323, 'reg_bu': 0.552231869738305, 'reg_pu': 0.13818144656560624, 'reg_qi': 0.0511891682271685}\\ 
+KNNBasicUserCosine & {'k': 304.46898466953195, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNBasicUserMsd & {'k': 246.35970617737902, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNBasicUserPearson & {'k': 692.2801074251299, 'min_k': 15.3074652414016, 'min_support': 1.1832049879547812}\\ 
+KNNBasicUserPearsonBaseline & {'k': 586.7688793426527, 'min_k': 5.203958815627411, 'min_support': 1.0, 'shrinkage': 155.55668071759925}\\ 
+KNNBasicItemCosine & {'k': 262.0708242683489, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNBasicItemMsd & {'k': 52.88466254844885, 'min_k': 18.06191012529652, 'min_support': 1.5643043331185496}\\ 
+KNNBasicItemPearson & {'k': 101.64571496532267, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNBasicItemPearsonBaseline & {'k': 59.713354556712545, 'min_k': 3.5741868215222254, 'min_support': 3.113983152867529, 'shrinkage': 155.39159778699187}\\ 
+KNNWithMeansUserCosine & {'k': 765.4119978623207, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNWithMeansUserMsd & {'k': 800.0, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNWithMeansUserPearson & {'k': 725.7740461842519, 'min_k': 3.840628195127495, 'min_support': 1.0794708402146642}\\ 
+KNNWithMeansUserPearsonBaseline & {'k': 378.5138032171988, 'min_k': 14.188038801166996, 'min_support': 1.4457668370108578, 'shrinkage': 147.5107572420257}\\ 
+KNNWithMeansItemCosine & {'k': 116.36505289638333, 'min_k': 17.210298838693436, 'min_support': 1.5364864865379446}\\ 
+KNNWithMeansItemMsd & {'k': 55.52162374174492, 'min_k': 10.043070898735587, 'min_support': 5.134564696599874}\\ 
+KNNWithMeansItemPearson & {'k': 615.7970821285231, 'min_k': 19.32847626813353, 'min_support': 1.044432025318069}\\ 
+KNNWithMeansItemPearsonBaseline & {'k': 509.8678591434333, 'min_k': 10.870090212080058, 'min_support': 6.227754848559382, 'shrinkage': 188.7836566526075}\\ 
+KNNWithZScoreUserCosine & {'k': 800.0, 'min_k': 15.617085555960724, 'min_support': 1.0}\\ 
+KNNWithZScoreUserMsd & {'k': 800.0, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNWithZScoreUserPearson & {'k': 765.4765056164463, 'min_k': 1.0, 'min_support': 1.0}\\ 
+KNNWithZScoreUserPearsonBaseline & {'k': 406.3435828257881, 'min_k': 10.622960337387278, 'min_support': 1.0, 'shrinkage': 179.64632317533926}\\ 
+KNNWithZScoreItemCosine & {'k': 250.44786217679467, 'min_k': 1.4004392758349828, 'min_support': 2.1240601463554136}\\ 
+KNNWithZScoreItemMsd & {'k': 69.52377996156604, 'min_k': 1.5535573934515283, 'min_support': 2.175720014390173}\\ 
+KNNWithZScoreItemPearson & {'k': 612.6054340082646, 'min_k': 1.6899526872308752, 'min_support': 4.461047271482495}\\ 
+KNNWithZScoreItemPearsonBaseline & {'k': 139.46261378039046, 'min_k': 7.441115472369834, 'min_support': 9.40456201761087, 'shrinkage': 195.3216435732557}\\ 
