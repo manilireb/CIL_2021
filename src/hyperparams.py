@@ -38,7 +38,7 @@ if __name__ == "__main__":
         KNN_WithZScore(sim_name="msd", user_based=False),
         KNN_WithZScore(sim_name="pearson", user_based=False),
         KNN_WithZScore(sim_name="pearson_baseline", user_based=False),
-        Slope_One(),
+        #Slope_One(),
     ]
 
     hyperparameters_with_names = []
@@ -52,4 +52,4 @@ if __name__ == "__main__":
         for tup in hyperparameters_with_names:
             line = tup[1] + " & " + str(tup[0])
             f.write(line)
-            f.write("\\\\ \n")
+            f.write("\n")
