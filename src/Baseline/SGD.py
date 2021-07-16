@@ -36,7 +36,7 @@ class SGD(BaseEstimator, TransformerMixin):
             "num_features": [2, 50],
             "lambda_user": [0.0005, 0.9],
             "lambda_item": [0.0005, 0.9],
-            "gamma": [0.0005, 0.1],
+            "gamma": [0.0005, 0.03],
         }
         np.random.seed(self.random_state)
 
