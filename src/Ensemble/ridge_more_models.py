@@ -66,7 +66,7 @@ if __name__ == "__main__":
     ground_truth = np.array([pred[2] for pred in p])
 
     # store pred_array in a csv file
-    with open("Ensemble_Features.csv") as f:
+    with open("Ensemble_features.csv", "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(pred_array)
 
