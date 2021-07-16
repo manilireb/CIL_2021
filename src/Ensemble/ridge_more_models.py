@@ -104,6 +104,6 @@ if __name__ == "__main__":
         pos.append(f"r{UID[i]}_c{IID[i]}")
         pred.append(y_hat[i])
 
-    with open("submission_ridge_more_models.csv", "w", newline="") as f:
+    with open("submission_ridge_more_models_all.csv", "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(zip(pos, pred))
