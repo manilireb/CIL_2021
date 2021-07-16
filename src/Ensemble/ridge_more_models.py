@@ -66,7 +66,7 @@ if __name__ == "__main__":
     ground_truth = np.array([pred[2] for pred in p])
 
     # store pred_array in a csv file
-    with open("Ensemble_Features.csv") as f:
+    with open("Ensemble_features.csv", "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(pred_array)
 
@@ -104,6 +104,6 @@ if __name__ == "__main__":
         pos.append(f"r{UID[i]}_c{IID[i]}")
         pred.append(y_hat[i])
 
-    with open("submission_ridge_more_models.csv", "w", newline="") as f:
+    with open("submission_ridge_more_models_all.csv", "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(zip(pos, pred))
