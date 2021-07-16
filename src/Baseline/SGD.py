@@ -59,8 +59,8 @@ class SGD(BaseEstimator, TransformerMixin):
             Initialized item matrix.
 
         """
-        user_matrix = 5 * np.random.rand(self.num_users, num_features)
-        item_matrix = 5 * np.random.rand(num_features, self.num_items)
+        user_matrix = np.random.rand(self.num_users, num_features)
+        item_matrix = np.random.rand(num_features, self.num_items)
         item_nnz = train.getnnz(axis=0)
         item_sum = train.sum(axis=0)
         item_matrix[0, :] = item_sum / item_nnz
