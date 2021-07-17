@@ -121,6 +121,7 @@ class SGD(BaseEstimator, TransformerMixin):
         nnz_users, nnz_items = data.nonzero()
         nnz_data = list(zip(nnz_users, nnz_items))
         for it in tqdm(range(self.num_epochs)):
+            gamma /= 1.1
             np.random.shuffle(nnz_data)
             for u, i in nnz_data:
                 user = user_matrix[u, :]
