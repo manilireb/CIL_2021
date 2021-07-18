@@ -13,4 +13,4 @@
 {"target": -1.061143140929632, "params": {"gamma": 0.0005, "lambda_item": 0.9, "lambda_user": 0.0005, "num_features": 46.05929656355575}, "datetime": {"datetime": "2021-07-18 03:58:49", "elapsed": 44702.573706, "delta": 4225.970851}}
 {"target": -1.3972178639392712, "params": {"gamma": 0.0005, "lambda_item": 0.9, "lambda_user": 0.9, "num_features": 8.982236268270945}, "datetime": {"datetime": "2021-07-18 05:02:43", "elapsed": 48536.349427, "delta": 3833.775721}}
 {"target": -1.0435590018523175, "params": {"gamma": 0.006381754331794252, "lambda_item": 0.11277823103846756, "lambda_user": 0.78524078814473, "num_features": 20.93336358873038}, "datetime": {"datetime": "2021-07-18 05:55:21", "elapsed": 51694.189639, "delta": 3157.840212}}
-{"target": NaN, "params": {"gamma": 0.03, "lambda_item": 0.0005, "lambda_user": 0.0005, "num_features": 12.188298202803699}, "datetime": {"datetime": "2021-07-18 06:47:25", "elapsed": 54818.016016, "delta": 3123.826377}}
+
