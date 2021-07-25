@@ -6,6 +6,8 @@ Created on Sat Jul 24 14:59:17 2021
 @author: manuel
 """
 
+import json
+
 import numpy as np
 import pandas as pd
 from bayes_opt import BayesianOptimization
@@ -35,8 +37,8 @@ class GBE:
         for X_train, X_test, y_train, y_test in kf.split(self.X, self.y):
             reg = GradientBoostingRegressor(
                 learning_rate=learning_rate,
-                n_estimators=n_estimators,
-                max_depth=max_depth,
+                n_estimators=int(n_estimators),
+                max_depth=int(max_depth),
                 random_state=self.random_state,
             )
             reg.fit(X_train, y_train)
@@ -54,6 +56,23 @@ class GBE:
         logger = JSONLogger(path=path)
         optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)
         optimizer.maximize(init_points=7, n_iter=20)
+
+    def get_opt_hyperparams(self):
+        file_name = get_git_root() + "/logs/GBE.json"
+        with open(file_name) as handle:
+            json_data = [json.loads(line) for line in handle]
+        rmse = []
+        for dic in json_data:
+            rmse.append(dic.get("target"))
+        index = np.argmax(rmse)
+        return json_data[index].get("params")
+
+    def get_opt_model(self):
+        opt_hyperparams = self.get_opt_hyperparams()
+        opt_hyperparams["n_estimators"] = int(opt_hyperparams["n_estimators"])
+        opt_hyperparams["max_depth"] = int(opt_hyperparams["max_depth"])
+        algo = GradientBoostingRegressor(**opt_hyperparams, random_state=self.random_state)
+        return algo
 
 
 if __name__ == "__main__":
