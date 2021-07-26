@@ -66,7 +66,8 @@ def main():
     pred_array = np.array(predictions).T
     ground_truth = np.array([pred[2] for pred in p])
 
-    reg = GBE.get_opt_model()
+    GB = GBE()
+    reg = GB.get_opt_model()
     reg.fit(pred_array, ground_truth)
 
     # loading and preparing prediction set
