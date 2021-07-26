@@ -5,13 +5,6 @@ Created on Wed Jul  7 16:02:53 2021
 @author: florinl
 """
 
-"""
-Created on Sun Jun 27 16:04:43 2021
-
-@author: florinl
-
-script to perform ridge regression as ensemble method
-"""
 
 
 #imports
