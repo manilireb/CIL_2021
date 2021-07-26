@@ -7,7 +7,6 @@ Created on Sat Jul 24 14:59:17 2021
 """
 
 import json
-import time
 
 import numpy as np
 import pandas as pd
@@ -23,8 +22,12 @@ from utilities.data_preprocess import get_git_root
 
 class GBE:
     def __init__(self):
-        self.X = np.array(pd.read_csv("Ensemble_features.csv"))
-        self.y = np.array(pd.read_csv("Ensemble_targets.csv")).squeeze()
+        try:
+            self.X = np.array(pd.read_csv("Ensemble_features.csv"))
+            self.y = np.array(pd.read_csv("Ensemble_targets.csv")).squeeze()
+        except FileNotFoundError:
+            self.X = None
+            self.y = None
         self.random_state = 42
         self.tuning_params = {
             "learning_rate": [0.005, 0.85],
