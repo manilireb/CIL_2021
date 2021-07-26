@@ -7,6 +7,7 @@ Created on Sat Jul 24 14:59:17 2021
 """
 
 import json
+import time
 
 import numpy as np
 import pandas as pd
@@ -25,37 +26,45 @@ class GBE:
         self.X = np.array(pd.read_csv("Ensemble_features.csv"))
         self.y = np.array(pd.read_csv("Ensemble_targets.csv")).squeeze()
         self.random_state = 42
-        self.tuning_params = {"learning_rate": [0.005, 0.85], "n_estimators": [80, 850], "max_depth": [2, 20]}
+        self.tuning_params = {
+            "learning_rate": [0.005, 0.85],
+            "n_estimators": [80, 400],
+            "max_depth": [2, 7],
+            "max_features": [8, 17],
+        }
 
     def get_rmse(self, y_pred, y_true):
         return np.sqrt(mean_squared_error(y_true, y_pred))
 
-    def optimizer_function(self, learning_rate, n_estimators, max_depth):
-        cv = 5
+    def optimizer_function(self, learning_rate, n_estimators, max_depth, max_features):
+        cv = 3
         kf = KFold(n_splits=cv, random_state=self.random_state, shuffle=True)
         test_RMSE_list = []
-        for X_train, X_test, y_train, y_test in kf.split(self.X, self.y):
+        print("parameters:", learning_rate, str(int(n_estimators)), str(int(max_depth)), str(int(max_features)))
+        for train, test in kf.split(self.X):
             reg = GradientBoostingRegressor(
                 learning_rate=learning_rate,
                 n_estimators=int(n_estimators),
                 max_depth=int(max_depth),
                 random_state=self.random_state,
+                max_features=int(max_features),
             )
-            reg.fit(X_train, y_train)
-            y_pred = reg.predict(X_test)
-            test_rmse = self.get_rmse(y_test, y_pred)
+            reg.fit(self.X[train], self.y[train])
+            y_pred = reg.predict(self.X[test])
+            print("Computation done")
+            test_rmse = self.get_rmse(self.y[test], y_pred)
             test_RMSE_list.append(test_rmse)
         mean = np.mean(test_RMSE_list)
         return -mean
 
     def log_hyperparams_to_json(self):
         optimizer = BayesianOptimization(
-            f=self.optimzier_function, pbounds=self.tuning_params, random_state=self.random_state
+            f=self.optimizer_function, pbounds=self.tuning_params, random_state=self.random_state
         )
         path = get_git_root() + "/logs/GBE.json"
         logger = JSONLogger(path=path)
         optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)
-        optimizer.maximize(init_points=7, n_iter=20)
+        optimizer.maximize(init_points=4, n_iter=10)
 
     def get_opt_hyperparams(self):
         file_name = get_git_root() + "/logs/GBE.json"
@@ -71,6 +80,7 @@ class GBE:
         opt_hyperparams = self.get_opt_hyperparams()
         opt_hyperparams["n_estimators"] = int(opt_hyperparams["n_estimators"])
         opt_hyperparams["max_depth"] = int(opt_hyperparams["max_depth"])
+        opt_hyperparams["max_features"] = int(opt_hyperparams["max_features"])
         algo = GradientBoostingRegressor(**opt_hyperparams, random_state=self.random_state)
         return algo
 
