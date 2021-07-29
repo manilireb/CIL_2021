@@ -94,7 +94,7 @@ if __name__ == "__main__":
     ground_truth = np.array([pred[2] for pred in p])
     
     # Define NN Model
-    mlp = MLPRegressor(max_iter = 500)
+    mlp = MLPRegressor(max_iter = 500, random_state = 14)
     
     # hyperparameter space
     parameter_space = {
