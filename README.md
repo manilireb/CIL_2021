@@ -2,7 +2,7 @@
 
 
 ## Description 
-This project was done as part of the course Computational Intelligence Lab 2021 at ETH Zurich (see [Course website](http://da.inf.ethz.ch/teaching/2021/CIL/)).  The goal was to build a recommender system on user-movie ratings (see [Kaggle Competition](https://www.kaggle.com/c/cil-collaborative-filtering-2021)).
+This project was done as part of the Computational Intelligence Lab 2021 at ETH Zurich (see [Course website](http://da.inf.ethz.ch/teaching/2021/CIL/)).  The goal was to build a recommender system on user-movie ratings (see [Kaggle Competition](https://www.kaggle.com/c/cil-collaborative-filtering-2021)).
 
 ## Setup
 The experiments were run and tested with `Python 3.6.1`.  
