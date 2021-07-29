@@ -4,6 +4,7 @@
 Created on Sat Jul 24 14:59:17 2021
 
 @author: manuel
+Class for the GradientBoostingRegressor on the base predictions.
 """
 
 import json
