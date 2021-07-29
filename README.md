@@ -37,6 +37,8 @@ python3 -m venv ~/CIL_2021/venv
 source ./init_leonhard.sh 
 ```
 
+## Reproduce Experiments
+All our experiments for the hyperparameter tuning are logged in the [logs](CIL_2021/logs/) folder.
 
 
 
