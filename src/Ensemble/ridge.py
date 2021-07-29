@@ -4,7 +4,7 @@ Created on Sun Jun 27 16:04:43 2021
 
 @author: florinl
 
-script to perform ridge regression as ensemble method
+script to perform ridge regression on the best 6 base models as ensemble method.
 """
 
 
