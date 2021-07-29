@@ -6,16 +6,9 @@ Created on Wed Jul  7 16:02:53 2021
 """
 
 """
-Created on Sun Jun 27 16:04:43 2021
-
-@author: florinl
-
-script to perform ridge regression as ensemble method
+Script to perform ridge regression as ensemble method on the best 6 models.
 """
 
-import os
-os.chdir('C:/Users/florinl/Documents/CIL Project/CIL_2021/src')
-#imports
 
 import numpy as np
 import pandas as pd
