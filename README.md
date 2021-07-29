@@ -45,4 +45,4 @@ To reproduce the final submissin run [this](https://github.com/manilireb/CIL_202
 
 
 ## Problems
-For problems or further questions, don't hesitate to ask at (manuel.reber@inf.ethz.ch)[manuel.reber@inf.ethz.ch].
+For problems or further questions, don't hesitate to ask at manuel.reber@inf.ethz.ch.
