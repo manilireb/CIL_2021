@@ -1,4 +1,13 @@
-# CIL_2021
+# Collaborative Filtering - Computational Intelligence Lab 2020
+
+
+## Description 
+This project was done as part of the course Computational Intelligence Lab 2021 at ETH Zurich (see [Course website] (http://da.inf.ethz.ch/teaching/2021/CIL/)).
+
+
+
+
+
 
 ### Creating the environment
 
