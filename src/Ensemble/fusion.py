@@ -8,6 +8,10 @@ from MF_Methods.MF_NMF import MFNMF
 from MF_Methods.MF_SVD import MFSVD
 from utilities.data_preprocess import Data
 
+'''
+script for creating the 5-fold cv on the average of the best 6 models
+'''
+
 if __name__ == "__main__":
 
     df = Data().get_df()
