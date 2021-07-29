@@ -40,7 +40,7 @@ source ./init_leonhard.sh
 ## Reproduce Experiments
 All our experiments for the hyperparameter tuning and the model evaluation are logged in the [logs](https://github.com/manilireb/CIL_2021/tree/main/logs) folder. The scripts that were producing these logs can be found in the [cluster](https://github.com/manilireb/CIL_2021/tree/main/cluster) folder.  
 The scripts that produce the submission files for Kaggle can be found in the [src](https://github.com/manilireb/CIL_2021/tree/main/src) folder.  
-To reproduce the final submissin run [this](https://github.com/manilireb/CIL_2021/blob/main/src/Ensemble/mlp_ridge_regressor_all.py).
+To reproduce the final submissin run [this](https://github.com/manilireb/CIL_2021/blob/main/src/Ensemble/mlp_ridge_regressor_all.py) file.
 
 
 
