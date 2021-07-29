@@ -3,28 +3,19 @@
 Created on Wed Jul  7 16:02:53 2021
 
 @author: florinl
+
+Script that creates a submission file for Kaggle which does a linear combination of a regression using a Multi-Layer perceptron and a Ridge regression of all 
+out base models.
 """
 
-"""
-Created on Sun Jun 27 16:04:43 2021
 
-@author: florinl
 
-script to perform ridge regression as ensemble method
-"""
-
-import os
-os.chdir('C:/Users/florinl/Documents/CIL Project/CIL_2021/src')
-#imports
 
 import numpy as np
 import pandas as pd
 
-
-
 import json
 import csv
-
 
 from KNN_Methods.KNN_Basics import KNN_Basic
 
