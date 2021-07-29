@@ -25,8 +25,17 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+### Setup on Leonhard Cluster
 
-
+Most of the experiments were run on the [Leonhard Cluster](https://scicomp.ethz.ch/wiki/Leonhard). If you like to reproduce the experiments, set up the cluster as follows:
+```
+cd home
+git clone https://github.com/manilireb/CIL_2021.git
+cd CIL_2021
+pip install --upgrade pip
+python3 -m venv ~/CIL_2021/venv
+source ./init_leonhard.sh 
+```
 
 
 
