@@ -38,7 +38,9 @@ source ./init_leonhard.sh
 ```
 
 ## Reproduce Experiments
-All our experiments for the hyperparameter tuning are logged in the [logs](https://github.com/manilireb/CIL_2021/tree/main/logs) folder.  
+All our experiments for the hyperparameter tuning are logged in the [logs](https://github.com/manilireb/CIL_2021/tree/main/logs) folder. The scripts that were producing these loggs can be found in the [cluster](https://github.com/manilireb/CIL_2021/tree/main/cluster) folder.  
+The scripts that produce the submission files for Kaggle can be found in the [src](https://github.com/manilireb/CIL_2021/tree/main/src) folder (see below for the structure of the files).
+
 
 
 
