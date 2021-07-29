@@ -1,3 +1,9 @@
+'''
+Script that produces a submission file for kaggle.
+Method: Ridge regression on all our base models.
+'''
+
+
 import csv
 
 import numpy as np
@@ -13,6 +19,7 @@ from MF_Methods.MF_NMF import MFNMF
 from MF_Methods.MF_SVD import MFSVD
 from SlopeOne.slope_one import Slope_One
 from utilities.data_preprocess import Data
+
 
 if __name__ == "__main__":
 
