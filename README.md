@@ -38,7 +38,9 @@ source ./init_leonhard.sh
 ```
 
 ## Reproduce Experiments
-All our experiments for the hyperparameter tuning are logged in the [logs](https://github.com/manilireb/CIL_2021/tree/main/logs) folder.
+All our experiments for the hyperparameter tuning are logged in the [logs](https://github.com/manilireb/CIL_2021/tree/main/logs) folder.  
+
+
 
 
 
