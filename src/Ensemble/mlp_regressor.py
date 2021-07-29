@@ -3,6 +3,8 @@
 Created on Wed Jul  7 16:02:53 2021
 
 @author: florinl
+
+Script for creating a submission file for kagge that performs regression using a Multi-Layer Perceptron on the best 6 base models.
 """
 
 
