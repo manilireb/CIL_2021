@@ -5,7 +5,26 @@
 This project was done as part of the course Computational Intelligence Lab 2021 at ETH Zurich (see [Course website](http://da.inf.ethz.ch/teaching/2021/CIL/)).  The goal was to build a recommender system on user-movie ratings (see [Kaggle Competition](https://www.kaggle.com/c/cil-collaborative-filtering-2021)).
 
 ## Setup
-The experiments were run and tested with `Python 3.6.1`.
+The experiments were run and tested with `Python 3.6.1`.  
+  
+Clone project: 
+```
+git clone https://github.com/manilireb/CIL_2021.git
+```
+Before running make sure that the source directory is recognized by your PYTHONPATH, e.g. do
+```
+export PYTHONPATH=/path_to_source_directory/CIL_2021:$PYTHONPATH
+export PYTHONPATH=/path_to_source_directory/CIL_2021/src:$PYTHONPATH
+```
+Install the virtual environment
+
+```
+cd CIL_2021
+python3 -m venv ~/CIL_2021/venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
 
 
 
