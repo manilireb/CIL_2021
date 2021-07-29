@@ -9,8 +9,9 @@ from MF_Methods.MF_NMF import MFNMF
 from MF_Methods.MF_SVD import MFSVD
 from utilities.data_preprocess import Data
 
-# Script for create a submission file for kaggle.
-
+'''
+Script for create a submission file for kaggle for the averaging of the best 6 models.
+'''
 
 if __name__ == "__main__":
 
