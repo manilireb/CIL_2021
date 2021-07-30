@@ -43,6 +43,12 @@ All our experiments for the hyperparameter tuning and the model evaluation are l
 The scripts that produce the submission files for Kaggle can be found in the [src](https://github.com/manilireb/CIL_2021/tree/main/src) folder.  
 To reproduce the final submissin run [this](https://github.com/manilireb/CIL_2021/blob/main/src/Ensemble/mlp_ridge_regressor_all.py) file.
 
+## Not Using Git
+If you downloaded the this repo without using git you have to initiate a git repo with 
+```
+git init
+```
+inside the folder. The reason is that we are using the `get_git_root()` function to navigate through the folders.
 
 ## Problems
 For problems or further questions, don't hesitate to ask at manuel.reber@inf.ethz.ch.
