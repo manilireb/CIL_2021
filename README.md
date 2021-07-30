@@ -45,7 +45,7 @@ The scripts that produce the submission files for Kaggle can be found in the [sr
 To reproduce the final submissin run [this](https://github.com/manilireb/CIL_2021/blob/main/src/Ensemble/mlp_ridge_regressor_all.py) file.
 
 ## Not Using Git
-If you downloaded the this repo without using git you have to initiate a git repo with 
+If you downloaded this repo without using git you have to initiate a git repo with 
 ```
 git init
 ```
